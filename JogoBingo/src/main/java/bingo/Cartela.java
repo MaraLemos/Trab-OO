@@ -16,7 +16,7 @@
  * Implementação dos atributos e métodos da classe Cartela *
  ***********************************************************/
 
-package ufjf.dcc025.jogobingo;
+package bingo;
 
 /**
  * @author Mara de Lemos Gomes
