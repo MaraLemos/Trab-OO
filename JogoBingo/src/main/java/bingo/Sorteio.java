@@ -13,59 +13,32 @@
  ************************************************************/
 
 /***********************************************************
- * Implementação dos atributos e métodos da classe Jogador *
+ * Implementação dos atributos e métodos da classe Sorteio *
  ***********************************************************/
  
 package bingo;
 
 /**
  *
- * @author Ketleen Anne Faria
+ * @author Mara de Lemos Gomes
  */
 
-public class Jogador {
+public class Sorteio {
     
-    private String userName ;
-    private int id;
-    private static int cartelaAssoc;
+    private List<Jogador> jogadores;
+	private List<Cartela> cartelas;
+    private int[] numSorteados;
+    private int vencedor;
 	
 	/**
-	 * Construtor da classe Jogador
-	 * @param userName
-	 * @param id
+	 * Construtor da classe Sorteio
 	 *
-	 * @author Ketleen Anne Faria
+	 * @author Mara de Lemos Gomes
 	 */
-    public Jogador(String userName, int id) {
-        this.userName = userName;
-        this.id = id;
-		this.cartelaAssoc = id;
-    }
-	
-	/**
-    * Retorna UserName de Jogador
-    * 
-    * @author Ketleen Anne Faria
-    */
-    public String getUserName() {
-        return userName;
-    }
-
-	/**
-    * Modifica UserName de Jogador
-    * 
-    * @author Ketleen Anne Faria
-    */
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-	/**
-    * Retorna Id de Jogador
-    * 
-    * @author Ketleen Anne Faria
-    */
-    public int getId() {
-        return id;
+    public Sorteio() {
+        this.jogadores = new ArrayList<>();
+		this.cartelas = new ArrayList<>();
+		this.numSorteados = new int[75];
+		this.vencedor = null;
     }
 }

@@ -20,6 +20,11 @@ package bingo;
 
 import java.util.Random;
 
+/**
+ *
+ * @author Mara de Lemos Gomes
+ */
+ 
 public class Cartela {
     
     private static int id;
