@@ -17,7 +17,7 @@
                 <configuration>
                   <archive>
                     <manifest>
-                      <mainClass>ufjf.dcc025.jogobingo.Cartela</mainClass>
+                      <mainClass>bingo.Cartela</mainClass>
                     </manifest>
                   </archive>
                   <descriptorRefs>

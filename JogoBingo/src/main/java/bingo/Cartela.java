@@ -18,39 +18,72 @@
 
 package bingo;
 
-/**
- * @author Mara de Lemos Gomes
- * Matrícula: 201965237A
- */
+import java.util.Random;
+
 public class Cartela {
     
+    private static int id;
     private static int[] numeros;
-    private static String jogadorAssoc;
     private static int numMarcados;
     
-    public Cartela(String nome){
+	/**
+    * Construtor da classe cartela
+	* @param identificador
+    * 
+    * @author Mara de Lemos Gomes
+    */
+    public Cartela(int identificador){
+        id = identificador;
         numeros = new int[24];
         numMarcados = 0;
-        jogadorAssoc = nome;
         iniciaCartela();
     }
     
+	/**
+    * Retorna Id da cartela
+    * 
+    * @author Mara de Lemos Gomes
+    */
+    public int getId(){
+        return id;
+    }
+    
+	/**
+    * Retorna a quantidade de números marcados
+    * 
+    * @author Mara de Lemos Gomes
+    */
     public int getNumMarcados(){
         return numMarcados;
     }
     
-    public String getJogadorAssoc(){
-        return jogadorAssoc;
-    }
-    
+    /**
+    * Marca número se ele existe na cartela
+    * 
+    * @author Mara de Lemos Gomes
+    */
     public void addNumMarcados(){
         if(buscaNum())
             numMarcados++;
     }
     
-    private static boolean buscaNum(){
+	/**
+    * Verifica se o número está na cartela
+    * @param num
+	*
+    * @author 
+    */
+    private static boolean buscaNum(int num){
         return false;
     }
+    
+    /**
+    * Insere os números no vetor numeros em ordem crescente
+    * @param num
+    * @param tam
+    * 
+    * @author Mara de Lemos Gomes
+    */
     private static int insereOrd(int num, int tam){
         int i, j;
         if (tam == 0) {
@@ -59,7 +92,13 @@ public class Cartela {
             return tam;
         } else {
             for (i = 0; i < tam; i++) {
+                //Se número já existe no vetor, não faz nada
+                if(num == numeros[i]){
+                    return tam;
+                }
+                //Se número é menor do que qualquer elemento do vetor
                 if (num < numeros[i]) {
+                    //Arrasta os demais elementos e insere número
                     for (j = tam - 1; j >= i; j--) {
                         numeros[j + 1] = numeros[j];
                     }
@@ -68,16 +107,56 @@ public class Cartela {
                     return tam;
                 }
             }
+            //Se número é maior do que qualquer elemento do vetor
             numeros[tam] = num;
             tam++;
             return tam;
         }
     }
+    
+    /**
+    * Sorteia números aleatórios para formar cartela
+    * 
+    * @author Mara de Lemos Gomes
+    */
     private static void iniciaCartela(){
         
+        //Cada cartela é única e possui 24 números aleatórios variando de 1 a 75.
+        
         int tam = 0,aux;
-        for(int i=0; i< 24; i++){
-            aux = (int)(Math.random() * 99);
+        Random random = new Random();
+        
+        //A coluna "B" é utilizada para os números de 1 a 15
+        while(tam != 5){
+            aux = random.nextInt(15) + 1;
+            tam = insereOrd(aux, tam);
+        }
+        
+        //A coluna "I" varia de 16 a 30
+        tam = 6;
+        while(tam != 5){
+            aux = random.nextInt(15) + 16;
+            tam = insereOrd(aux, tam);
+        }
+        
+        //"N" de 31 a 45
+        tam = 11;
+        while(tam != 4){
+            aux = random.nextInt(15) + 31;
+            tam = insereOrd(aux, tam);
+        }
+        
+        //"G" de 46 a 60
+        tam = 15;
+        while(tam != 5){
+            aux = random.nextInt(15) + 46;
+            tam = insereOrd(aux, tam);
+        }
+        
+        //"O" de 61 a 75
+        tam = 20;
+        while(tam != 5){
+            aux = random.nextInt(15) + 61;
             tam = insereOrd(aux, tam);
         }
     }
@@ -90,8 +169,8 @@ public class Cartela {
     }
     
     public static void main(String[] args){
-        Cartela mara = new Cartela("Mara");
+        Cartela mara = new Cartela(01);
         mara.imprimeCartela();
-        System.out.print(mara.getJogadorAssoc());
+        System.out.print(mara.getId());
     }   
 }
