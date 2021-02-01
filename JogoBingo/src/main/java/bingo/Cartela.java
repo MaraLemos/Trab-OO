@@ -66,9 +66,10 @@ public class Cartela {
     * Marca número se ele existe na cartela
     * 
     * @author Mara de Lemos Gomes
+    * @param num
     */
-    public void addNumMarcados(){
-        if(buscaNum())
+    public static void addNumMarcados(int num){
+        if(buscaNum(num))
             numMarcados++;
     }
     

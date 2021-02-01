@@ -18,6 +18,8 @@
  
 package bingo;
 
+import java.util.*;
+
 /**
  *
  * @author Mara de Lemos Gomes
@@ -39,6 +41,6 @@ public class Sorteio {
         this.jogadores = new ArrayList<>();
 		this.cartelas = new ArrayList<>();
 		this.numSorteados = new int[75];
-		this.vencedor = null;
+		this.vencedor = 0;
     }
 }
