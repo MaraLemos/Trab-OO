@@ -31,9 +31,9 @@ public class Cartela {
     private static int[] numeros;
     private static int numMarcados;
     
-	/**
+    /**
     * Construtor da classe cartela
-	* @param identificador
+    * @param identificador
     * 
     * @author Mara de Lemos Gomes
     */
@@ -46,6 +46,7 @@ public class Cartela {
     
 	/**
     * Retorna Id da cartela
+    * @return id da cartela
     * 
     * @author Mara de Lemos Gomes
     */
@@ -53,8 +54,9 @@ public class Cartela {
         return id;
     }
     
-	/**
+    /**
     * Retorna a quantidade de números marcados
+    * @return quantidade de numeros marcados na cartela
     * 
     * @author Mara de Lemos Gomes
     */
@@ -72,13 +74,6 @@ public class Cartela {
         if(buscaNum(num))
             numMarcados++;
     }
-    
-	/**
-    * Verifica se o número está na cartela
-    * @param num
-	*
-    * @author 
-    */
     
     /**
     * Insere os números no vetor numeros em ordem crescente
@@ -136,40 +131,41 @@ public class Cartela {
         }
         
         //A coluna "I" varia de 16 a 30
-        tam = 6;
-        while(tam != 5){
+        while(tam != 10){
             aux = random.nextInt(15) + 16;
             tam = insereOrd(aux, tam);
         }
         
         //"N" de 31 a 45
-        tam = 11;
-        while(tam != 4){
+        while(tam != 14){
             aux = random.nextInt(15) + 31;
             tam = insereOrd(aux, tam);
         }
         
         //"G" de 46 a 60
-        tam = 15;
-        while(tam != 5){
+        while(tam != 19){
             aux = random.nextInt(15) + 46;
             tam = insereOrd(aux, tam);
         }
         
         //"O" de 61 a 75
-        tam = 20;
-        while(tam != 5){
+        while(tam != 24){
             aux = random.nextInt(15) + 61;
             tam = insereOrd(aux, tam);
         }
     }
     
-    
-    //verifica se o numero está dentro dos limites que possui na cartela
-    // e depois se o numero passado está na  cartela
-    
+    /**
+    * Verifica se o número está na cartela
+    * @param num
+    * @return boolean
+    *
+    * @author Ketleen Anne Faria 
+    */
     public static boolean buscaNum(int num){
+        //verifica se o numero está dentro dos limites que possui na cartela
         if(num >= 0 && num <= 75){
+            // e depois se o numero passado está na  cartela
             for(int i=0; i < numeros.length; i++){
                 if(numeros[i] == num)
                     return true;
@@ -192,9 +188,14 @@ public class Cartela {
     
     public static void main(String[] args){
         Cartela mara = new Cartela(01);
+        System.out.print("Imprimindo cartela");
         mara.imprimeCartela();
-        System.out.print(mara.getId());
-        System.out.println(" " + mara.buscaNum(8));
+        System.out.println("\r\n Id da cartela" + mara.getId());
+        if(Cartela.buscaNum(8) == true){
+            System.out.print("A busca encontrou o numero");
+        }else{
+            System.out.print("A busca não encontrou o numero");
+        }
     }   
     
 }
