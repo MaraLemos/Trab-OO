@@ -79,9 +79,6 @@ public class Cartela {
 	*
     * @author 
     */
-    private static boolean buscaNum(int num){
-        return false;
-    }
     
     /**
     * Insere os números no vetor numeros em ordem crescente
@@ -167,6 +164,23 @@ public class Cartela {
         }
     }
     
+    
+    //verifica se o numero está dentro dos limites que possui na cartela
+    // e depois se o numero passado está na  cartela
+    
+    public static boolean buscaNum(int num){
+        if(num >= 0 && num <= 75){
+            for(int i=0; i < numeros.length; i++){
+                if(numeros[i] == num)
+                    return true;
+            }
+            return false;
+        }
+        else
+            return false;
+            
+    }
+    
     public void imprimeCartela(){
         System.out.println("Cartela:");
         for(int i=0; i< 24; i++){
@@ -174,9 +188,13 @@ public class Cartela {
         }
     }
     
+    
+    
     public static void main(String[] args){
         Cartela mara = new Cartela(01);
         mara.imprimeCartela();
         System.out.print(mara.getId());
+        System.out.println(" " + mara.buscaNum(8));
     }   
+    
 }
