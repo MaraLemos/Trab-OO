@@ -38,8 +38,8 @@ public class Jogador {
 	 */
     public Jogador(String userName, int id) {
         this.userName = userName;
-        this.id = id;
-		this.cartelaAssoc = id;
+        this.id = id;   
+        this.cartelaAssoc = id;
     }
 	
 	/**
