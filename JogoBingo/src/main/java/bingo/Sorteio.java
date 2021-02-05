@@ -43,4 +43,36 @@ public class Sorteio {
 		this.numSorteados = new int[75];
 		this.vencedor = 0;
     }
+    
+    /**
+     * Insere jogador no bingo
+     * 
+     * @author Ary de Paula Canuto Neto
+     */
+    
+    public void insereJogador(){
+        Scanner teclado = new Scanner(System.in);
+        int id = 1;
+        int resposta;
+        String nome;
+        System.out.println("Quer adicionar um jogador?\n (1) Sim\n (2) Não\n");
+        resposta = teclado.nextInt();
+        while(resposta < 1 && resposta > 2){
+            System.out.println("Resposta inválida. Quer adicionar um jogador?\n (1) Sim\n (2) Não\n");
+            resposta = teclado.nextInt();
+        }
+        while(resposta == 1){
+            System.out.println("Qual o nome do jogador?");
+        
+            nome = teclado.next();
+        
+            jogadores.add(new Jogador(nome, id));
+            cartelas.add(new Cartela(id));
+            id++;
+            
+            System.out.println("Quer adicionar outro jogador?\n (1) Sim\n (2) Não\n");
+            resposta = teclado.nextInt();
+        }
+        
+    }
 }

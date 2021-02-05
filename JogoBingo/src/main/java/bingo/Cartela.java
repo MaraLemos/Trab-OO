@@ -187,6 +187,9 @@ public class Cartela {
     
     
     public static void main(String[] args){
+        Sorteio sorteio1 = new Sorteio(); //botei aqui para inserir o jogador
+        sorteio1.insereJogador(); //insere varios jogadores
+        
         Cartela mara = new Cartela(01);
         System.out.print("Imprimindo cartela");
         mara.imprimeCartela();
