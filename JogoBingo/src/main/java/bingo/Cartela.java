@@ -25,24 +25,12 @@ import java.util.Random;
  * @author Mara de Lemos Gomes
  */
  
-public class Cartela {
+public abstract class Cartela {
     
-    private static int id;
-    private static int[] numeros;
-    private static int numMarcados;
+    protected static int id;
+    protected static int[] numeros;
+    protected static int numMarcados;
     
-    /**
-    * Construtor da classe cartela
-    * @param identificador
-    * 
-    * @author Mara de Lemos Gomes
-    */
-    public Cartela(int identificador){
-        id = identificador;
-        numeros = new int[24];
-        numMarcados = 0;
-        iniciaCartela();
-    }
     
 	/**
     * Retorna Id da cartela
@@ -79,10 +67,11 @@ public class Cartela {
     * Insere os números no vetor numeros em ordem crescente
     * @param num
     * @param tam
+    * @return tam Quantidade de elementos no vetor numeros
     * 
     * @author Mara de Lemos Gomes
     */
-    private static int insereOrd(int num, int tam){
+    protected static int insereOrd(int num, int tam){
         int i, j;
         if (tam == 0) {
             numeros[0] = num;
@@ -117,7 +106,7 @@ public class Cartela {
     * 
     * @author Mara de Lemos Gomes
     */
-    private static void iniciaCartela(){
+    protected static void iniciaCartela(){
         
         //Cada cartela é única e possui 24 números aleatórios variando de 1 a 75.
         
@@ -190,7 +179,7 @@ public class Cartela {
         Sorteio sorteio1 = new Sorteio(); //botei aqui para inserir o jogador
         sorteio1.insereJogador(); //insere varios jogadores
         
-        Cartela mara = new Cartela(01);
+        Cartela mara = new CartelaLinha(01);
         System.out.print("Imprimindo cartela");
         mara.imprimeCartela();
         System.out.println("\r\n Id da cartela" + mara.getId());

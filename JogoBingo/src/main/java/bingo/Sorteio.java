@@ -27,8 +27,8 @@ import java.util.*;
 
 public class Sorteio {
     
-    private List<Jogador> jogadores;
-	private List<Cartela> cartelas;
+    private  List<Jogador> jogadores;
+    private List<Cartela> cartelas;
     private int[] numSorteados;
     private int vencedor;
 	
@@ -67,7 +67,7 @@ public class Sorteio {
             nome = teclado.next();
         
             jogadores.add(new Jogador(nome, id));
-            cartelas.add(new Cartela(id));
+            cartelas.add(new CartelaLinha(id));
             id++;
             
             System.out.println("Quer adicionar outro jogador?\n (1) Sim\n (2) Não\n");
