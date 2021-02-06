@@ -35,4 +35,15 @@ public class CartelaCheia extends Cartela{
         numMarcados = 0;
         iniciaCartela();
     }
+    
+    /**
+    * Verifica se a cartela foi totalmente preenchida
+    * @return boolean
+    * 
+    * @author Mara de Lemos Gomes
+    */
+    @Override
+    protected boolean verificaVitoria() {
+        return numMarcados == 24;
+    }
 }

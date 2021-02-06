@@ -32,7 +32,15 @@ public abstract class Cartela {
     protected static int numMarcados;
     
     
-	/**
+    /**
+    * Retorna se cartela completou os requisitos para vitória
+    * @return boolean
+    * 
+    * @author Mara de Lemos Gomes
+    */
+    protected abstract boolean verificaVitoria();
+    
+    /**
     * Retorna Id da cartela
     * @return id da cartela
     * 
@@ -65,9 +73,10 @@ public abstract class Cartela {
     
     /**
     * Insere os números no vetor numeros em ordem crescente
+    * Retorna quantidade de elementos no vetor numeros
     * @param num
     * @param tam
-    * @return tam Quantidade de elementos no vetor numeros
+    * @return tam 
     * 
     * @author Mara de Lemos Gomes
     */
@@ -179,9 +188,14 @@ public abstract class Cartela {
         Sorteio sorteio1 = new Sorteio(); //botei aqui para inserir o jogador
         sorteio1.insereJogador(); //insere varios jogadores
         
-        Cartela mara = new CartelaLinha(01);
+        Cartela mara = new CartelaCheia(01);
         System.out.print("Imprimindo cartela");
         mara.imprimeCartela();
+        if(mara.verificaVitoria()){
+            System.out.println("verdadeiro");
+        }else{
+            System.out.println("Falso");
+        }
         System.out.println("\r\n Id da cartela" + mara.getId());
         if(Cartela.buscaNum(8) == true){
             System.out.print("A busca encontrou o numero");

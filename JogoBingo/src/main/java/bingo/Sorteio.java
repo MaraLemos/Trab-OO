@@ -32,6 +32,7 @@ public class Sorteio {
     private List<Cartela> cartelas;
     private int[] numSorteados;
     private int vencedor;
+    private String tipoCartela;
 	
 	/**
 	 * Construtor da classe Sorteio
