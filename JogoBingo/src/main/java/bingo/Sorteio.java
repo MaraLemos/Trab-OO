@@ -19,6 +19,7 @@
 package bingo;
 
 import java.util.*;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -74,5 +75,16 @@ public class Sorteio {
             resposta = teclado.nextInt();
         }
         
+    }
+    
+    public void RemoveJogador(int id) {
+
+        if (id >= 0 && id < this.jogadores.size()) {
+            for (int i = id; i < this.jogadores.size() - 1; i++) {
+                this.jogadores.set(i, this.jogadores.get(i + 1));
+            }
+        }else{
+            JOptionPane.showConfirmDialog(null, " Jogador não existe ! ", " ERRO !" ,JOptionPane.DEFAULT_OPTION);
+        }
     }
 }
