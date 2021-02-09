@@ -33,7 +33,7 @@ public class Sorteio {
     private int[] numSorteados;
     private int vencedor;
     private String tipoCartela;
-	
+    private int id;
 	/**
 	 * Construtor da classe Sorteio
 	 *
@@ -44,6 +44,7 @@ public class Sorteio {
 		this.cartelas = new ArrayList<>();
 		this.numSorteados = new int[75];
 		this.vencedor = 0;
+                this.id = 0;
     }
     
     /**
@@ -52,30 +53,30 @@ public class Sorteio {
      * @author Ary de Paula Canuto Neto
      */
     
-    public void insereJogador(){
-        Scanner teclado = new Scanner(System.in);
-        int id = 1;
-        int resposta;
-        String nome;
-        System.out.println("Quer adicionar um jogador?\n (1) Sim\n (2) Não\n");
-        resposta = teclado.nextInt();
-        while(resposta < 1 && resposta > 2){
-            System.out.println("Resposta inválida. Quer adicionar um jogador?\n (1) Sim\n (2) Não\n");
-            resposta = teclado.nextInt();
+    public void insereJogador(String nome){
+        nome = nome.toUpperCase().trim();
+        
+        this.id = 1;
+        String nome1;
+        
+        for(int i = 0; i < jogadores.size(); i++){
+            nome1 = jogadores.get(i).getUserName();
+            nome1 = nome1.toUpperCase().trim();
+            if(nome1.compareTo(nome) == 0){
+                JOptionPane.showMessageDialog(null, "Esse nome já está sendo usado, tente outro.", "ERRO!", JOptionPane.ERROR_MESSAGE, null);
+                return;
+            }
         }
-        while(resposta == 1){
-            System.out.println("Qual o nome do jogador?");
+        jogadores.add(new Jogador(nome, id));
         
-            nome = teclado.next();
-        
-            jogadores.add(new Jogador(nome, id));
+        if(tipoCartela == "cheia"){
+            cartelas.add(new CartelaCheia(id));
+        }
+        else{
             cartelas.add(new CartelaLinha(id));
-            id++;
-            
-            System.out.println("Quer adicionar outro jogador?\n (1) Sim\n (2) Não\n");
-            resposta = teclado.nextInt();
         }
         
+        id++;
     }
     
     public void RemoveJogador(int id) {
