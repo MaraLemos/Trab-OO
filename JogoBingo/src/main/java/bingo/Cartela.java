@@ -27,9 +27,9 @@ import java.util.Random;
  
 public abstract class Cartela {
     
-    protected static int id;
-    protected static int[] numeros;
-    protected static int numMarcados;
+    protected int id;
+    protected int[] numeros;
+    protected int numMarcados;
     
     
     /**
@@ -66,7 +66,7 @@ public abstract class Cartela {
     * @author Mara de Lemos Gomes
     * @param num
     */
-    public static void addNumMarcados(int num){
+    public void addNumMarcados(int num){
         if(buscaNum(num))
             numMarcados++;
     }
@@ -80,7 +80,7 @@ public abstract class Cartela {
     * 
     * @author Mara de Lemos Gomes
     */
-    protected static int insereOrd(int num, int tam){
+    protected int insereOrd(int num, int tam){
         int i, j;
         if (tam == 0) {
             numeros[0] = num;
@@ -115,7 +115,7 @@ public abstract class Cartela {
     * 
     * @author Mara de Lemos Gomes
     */
-    protected static void iniciaCartela(){
+    protected void iniciaCartela(){
         
         //Cada cartela é única e possui 24 números aleatórios variando de 1 a 75.
         
@@ -160,7 +160,7 @@ public abstract class Cartela {
     *
     * @author Ketleen Anne Faria 
     */
-    public static boolean buscaNum(int num){
+    public boolean buscaNum(int num){
         //verifica se o numero está dentro dos limites que possui na cartela
         if(num >= 0 && num <= 75){
             // e depois se o numero passado está na  cartela
@@ -180,28 +180,7 @@ public abstract class Cartela {
         for(int i=0; i< 24; i++){
             System.out.print(numeros[i] + " ");
         }
-    }
-    
-    
-    
-    public static void main(String[] args){
-        Sorteio sorteio1 = new Sorteio(); //botei aqui para inserir o jogador
-        sorteio1.insereJogador("nome"); //insere varios jogadores
-       
-        Cartela mara = new CartelaCheia(01);
-        System.out.print("Imprimindo cartela");
-        mara.imprimeCartela();
-        if(mara.verificaVitoria()){
-            System.out.println("verdadeiro");
-        }else{
-            System.out.println("Falso");
-        }
-        System.out.println("\r\n Id da cartela" + mara.getId());
-        if(Cartela.buscaNum(8) == true){
-            System.out.print("A busca encontrou o numero");
-        }else{
-            System.out.print("A busca não encontrou o numero");
-        }
-    }   
+        System.out.println("");
+    }  
     
 }

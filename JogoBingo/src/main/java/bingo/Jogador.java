@@ -27,7 +27,7 @@ public class Jogador {
     
     private String userName ;
     private int id;
-    private static int cartelaAssoc;
+    private int cartelaAssoc;
 	
 	/**
 	 * Construtor da classe Jogador
@@ -44,6 +44,7 @@ public class Jogador {
 	
 	/**
     * Retorna UserName de Jogador
+    * @return userName
     * 
     * @author Ketleen Anne Faria
     */
@@ -53,6 +54,7 @@ public class Jogador {
 
 	/**
     * Modifica UserName de Jogador
+    * @param userName
     * 
     * @author Ketleen Anne Faria
     */
@@ -62,10 +64,21 @@ public class Jogador {
 
 	/**
     * Retorna Id de Jogador
+    * @return id
     * 
     * @author Ketleen Anne Faria
     */
     public int getId() {
         return id;
+    }
+    
+    	/**
+    * Retorna o id da cartela associada ao Jogador
+    * @return cartelaAssoc
+    * 
+    * @author Mara de Lemos Gomes
+    */
+    public int getCartelaAssoc() {
+        return cartelaAssoc;
     }
 }

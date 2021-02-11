@@ -33,22 +33,24 @@ public class Sorteio {
     private int[] numSorteados;
     private int vencedor;
     private String tipoCartela;
-    private int id;
+    private int qtdJogadores;
 	/**
 	 * Construtor da classe Sorteio
 	 *
 	 * @author Mara de Lemos Gomes
 	 */
-    public Sorteio() {
+    public Sorteio(String tipo) {
         this.jogadores = new ArrayList<>();
 		this.cartelas = new ArrayList<>();
 		this.numSorteados = new int[75];
 		this.vencedor = 0;
-                this.id = 0;
+                this.tipoCartela = tipo;
+                this.qtdJogadores = 0;
     }
     
     /**
      * Insere jogador no bingo
+     * @param nome
      * 
      * @author Ary de Paula Canuto Neto
      */
@@ -56,37 +58,75 @@ public class Sorteio {
     public void insereJogador(String nome){
         nome = nome.toUpperCase().trim();
         
-        this.id = 1;
         String nome1;
+        int i;
         
-        for(int i = 0; i < jogadores.size(); i++){
+        for(i = 0; i < jogadores.size(); i++){
             nome1 = jogadores.get(i).getUserName();
             nome1 = nome1.toUpperCase().trim();
             if(nome1.compareTo(nome) == 0){
                 JOptionPane.showMessageDialog(null, "Esse nome já está sendo usado, tente outro.", "ERRO!", JOptionPane.ERROR_MESSAGE, null);
-                return;
+                break;
             }
         }
-        jogadores.add(new Jogador(nome, id));
         
-        if(tipoCartela == "cheia"){
-            cartelas.add(new CartelaCheia(id));
-        }
-        else{
-            cartelas.add(new CartelaLinha(id));
-        }
+        if(i == jogadores.size()){
+            jogadores.add(new Jogador(nome, qtdJogadores));
         
-        id++;
+            if(tipoCartela.compareTo("cheia") == 0){
+                cartelas.add(new CartelaCheia(qtdJogadores));
+            }
+            else{
+                cartelas.add(new CartelaLinha(qtdJogadores));
+            }
+
+            this.qtdJogadores++;
+        }
     }
     
     public void RemoveJogador(int id) {
 
         if (id >= 0 && id < this.jogadores.size()) {
-            for (int i = id; i < this.jogadores.size() - 1; i++) {
-                this.jogadores.set(i, this.jogadores.get(i + 1));
-            }
+            jogadores.remove(id);
+            cartelas.remove(id);
+            this.qtdJogadores--;
         }else{
             JOptionPane.showConfirmDialog(null, " Jogador não existe ! ", " ERRO !" ,JOptionPane.DEFAULT_OPTION);
         }
     }
+    
+    /**
+     * Imprime todos os jogadores da lista e sua cartela
+     * 
+     * @author Mara de Lemos Gomes
+     */
+    public void imprimeJogadores(){
+        for(int i = 0; i < jogadores.size(); i++){
+            System.out.println(jogadores.get(i).getUserName());
+            cartelas.get(i).imprimeCartela();   
+        }
+    }
+    
+    /**
+     * Retorna a quatidade de jogadores na lista
+     * @return qtdJogadores
+     * 
+     * @author Mara de Lemos Gomes 
+     */
+    public int getQtdJogadores(){
+        return qtdJogadores;
+    }
+    
+    public static void main(String[] args){
+        Sorteio sorteio1 = new Sorteio("cheia"); 
+        sorteio1.insereJogador("Maria");
+        sorteio1.insereJogador("Joao");
+        sorteio1.insereJogador("Joao");
+        System.out.println(sorteio1.getQtdJogadores());
+        sorteio1.imprimeJogadores();
+        
+        sorteio1.RemoveJogador(0);
+        System.out.println(sorteio1.getQtdJogadores());
+        sorteio1.imprimeJogadores();
+    } 
 }
