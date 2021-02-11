@@ -66,9 +66,13 @@ public abstract class Cartela {
     * @author Mara de Lemos Gomes
     * @param num
     */
-    public void addNumMarcados(int num){
-        if(buscaNum(num))
+    public void marcaNum(int num){
+        int i = buscaNum(num);
+        if(i != 99){
             numMarcados++;
+            //O número é marcado com um sinal de menos
+            numeros[i] *= -1;
+        }
     }
     
     /**
@@ -160,18 +164,20 @@ public abstract class Cartela {
     *
     * @author Ketleen Anne Faria 
     */
-    public boolean buscaNum(int num){
+    public int buscaNum(int num){
         //verifica se o numero está dentro dos limites que possui na cartela
         if(num >= 0 && num <= 75){
             // e depois se o numero passado está na  cartela
             for(int i=0; i < numeros.length; i++){
                 if(numeros[i] == num)
-                    return true;
+                    return i;
             }
-            return false;
+            //Retorna 99 se o numero não existe na cartela
+            return 99;
         }
         else
-            return false;
+            //Retorna 99 se o numero não existe na cartela
+            return 99;
             
     }
     
