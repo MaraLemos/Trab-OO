@@ -117,6 +117,42 @@ public class Sorteio {
         return qtdJogadores;
     }
     
+    /**
+     * sorteia os numeros para o bingo
+     * 
+     * @author Ary de Paula Canuto Neto
+     */
+    public void roleta(){
+        int numero = (int) (1 + Math.random() * 74);
+        System.out.println(numero); //coloquei aqui só para ajudar na visualização
+        int i;
+        
+        //verifica se o numero ja foi sorteado
+        for(i = 0; i < numSorteados.length; i++){
+            if(numSorteados[i] == numero){
+                break;
+            }
+        }
+        
+        //insere o numero sorteado na primeira posição disponivel
+        for(int k = 0; k < numSorteados.length; k++){
+            if(numSorteados[k] == 0){
+                numSorteados[k] = numero;
+                break;
+            }
+        }
+        
+        //marca o numero e checa se a cartela cumpre os requisitos para ganhar o jogo
+        if(i == numSorteados.length){
+            for(int j = 0; j < cartelas.size(); j++){
+                cartelas.get(j).marcaNum(numero);
+                if(cartelas.get(j).verificaVitoria() == true){
+                    System.out.println("vitoria!");
+                }
+            }
+        }
+    }
+    
     public static void main(String[] args){
         Sorteio sorteio1 = new Sorteio("cheia"); 
         sorteio1.insereJogador("Maria");
@@ -127,6 +163,15 @@ public class Sorteio {
         
         sorteio1.RemoveJogador(0);
         System.out.println(sorteio1.getQtdJogadores());
+        
+        sorteio1.roleta();
+        sorteio1.roleta();
+        sorteio1.roleta();
+        sorteio1.roleta();
+        sorteio1.roleta();
+        sorteio1.roleta();
+        sorteio1.roleta();
+        
         sorteio1.imprimeJogadores();
     } 
 }
