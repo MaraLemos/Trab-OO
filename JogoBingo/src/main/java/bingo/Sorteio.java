@@ -96,6 +96,29 @@ public class Sorteio {
     }
     
     /**
+    * Edita o nome do jogador na lista de jogadores
+    * 
+    * @author Thiago Goulart da Fonseca
+    * @param nome
+    * @param id
+    */
+    
+    public void editaJogador(String nome ,int id){
+        int i;
+        
+        for(i = 0; i < jogadores.size(); i++){
+            if(jogadores.get(i).getUserName().compareTo(nome) == 0){
+                JOptionPane.showConfirmDialog(null, " Nome já utilizado ! ", " ERRO !" ,JOptionPane.DEFAULT_OPTION);
+                break;
+            }
+        }
+        if(i == jogadores.size()){
+            jogadores.get(id).setUserName(nome);
+            JOptionPane.showConfirmDialog(null, " Nome alterado com Sucesso ! ", " SUCESSO !" ,JOptionPane.DEFAULT_OPTION);
+        }
+    }
+    
+    /**
      * Imprime todos os jogadores da lista e sua cartela
      * 
      * @author Mara de Lemos Gomes
