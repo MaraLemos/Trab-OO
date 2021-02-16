@@ -4,10 +4,10 @@
  * Departamento de Ciência da Computação                    *
  * Disciplina: DCC025 – Orientação a Objetos - 2020.3       *
  * Professor: Gleiph Ghiotto Lima de Menezes                *
- * Aluno(s): Ary de Paula Canuto Neto                       *
- *           Ketleen Anne Faria                             *
- *           Mara de Lemos Gomes                            *
- *           Thiago Goulart da Fonseca                      *
+ * Aluno(s): Ary de Paula Canuto Neto - MAT 201965560C      *
+ *           Ketleen Anne Faria - MAT 201965066AC           *
+ *           Mara de Lemos Gomes - MAT 201965237A           *
+ *           Thiago Goulart da Fonseca - MAT 201865119AB    *
  * Versão: 1.0.0                                            *
  *                    TRABALHO PRÁTICO                      *
  ************************************************************/
@@ -147,15 +147,19 @@ public class Sorteio {
      */
     public void roleta(){
         int numero = (int) (1 + Math.random() * 74);
-        System.out.println(numero); //coloquei aqui só para ajudar na visualização
+        System.out.print("numero inicial: " + numero + "/"); //coloquei aqui só para ajudar na visualização, no final do trabalho tira
         int i;
         
         //verifica se o numero ja foi sorteado
         for(i = 0; i < numSorteados.length; i++){
             if(numSorteados[i] == numero){
-                break;
+                do{
+                    numero = (int) (1 + Math.random() * 74);
+                }while(numSorteados[numero - 1] == numero);
             }
         }
+                
+        System.out.println("numero final: " + numero); //visualizaçao tambem, no final do trabalho tira
         
         //insere o numero sorteado na primeira posição disponivel
         for(int k = 0; k < numSorteados.length; k++){
@@ -166,14 +170,14 @@ public class Sorteio {
         }
         
         //marca o numero e checa se a cartela cumpre os requisitos para ganhar o jogo
-        if(i == numSorteados.length){
+        
             for(int j = 0; j < cartelas.size(); j++){
                 cartelas.get(j).marcaNum(numero);
                 if(cartelas.get(j).verificaVitoria() == true){
                     System.out.println("vitoria!");
                 }
             }
-        }
+        
     }
     
     public static void main(String[] args){
