@@ -93,7 +93,7 @@ public class Sorteio {
             cartelas.remove(id);
             this.qtdJogadores--;
         }else{
-            JOptionPane.showConfirmDialog(null, " Jogador não eJOptionPane.showConfirmDialog(null, \" Jogador não existe ! \", \" ERRO !\" ,JOptionPane.DEFAULT_OPTION);xiste ! ", " ERRO !" ,JOptionPane.DEFAULT_OPTION);
+            JOptionPane.showConfirmDialog(null, " Jogador não existe ! ", " ERRO !" ,JOptionPane.DEFAULT_OPTION);
         }
     }
     
