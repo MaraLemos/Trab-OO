@@ -44,10 +44,10 @@ public class Sorteio {
         this.jogadores = new ArrayList<>();
 		this.cartelas = new ArrayList<>();
 		this.numSorteados = new int[75];
-		this.vencedor = 0;
-                this.tipoCartela = tipo;
-                this.qtdJogadores = 0;
-                this.qtdNumSorteados = 0;
+		this.vencedor = -1;
+        this.tipoCartela = tipo;
+        this.qtdJogadores = 0;
+        this.qtdNumSorteados = 0;
     }
     
     /**
@@ -181,10 +181,21 @@ public class Sorteio {
                 cartelas.get(j).marcaNum(numero);
                 if(cartelas.get(j).verificaVitoria() == true){
 					JOptionPane.showConfirmDialog(null, " Parabéns " + jogadores.get(j).getUserName() + "! Você ganhou!", " VITÓRIA !" ,JOptionPane.DEFAULT_OPTION);
+					vencedor = j;
                 }
             }
     }
     
+	/**
+     * Retorna o id do Jogador vencedor, ou -1 se não existe um vencedor
+     * @return vencedor
+	 *
+     * @author Mara de Lemos Gomes
+     */
+	public int getVencedor(){
+		return vencedor;
+	}
+	
     public static void main(String[] args){
         Sorteio sorteio1 = new Sorteio("cheia"); 
         sorteio1.insereJogador("Maria");
@@ -196,7 +207,7 @@ public class Sorteio {
         //sorteio1.RemoveJogador(0);
         //System.out.println(sorteio1.getQtdJogadores());
         
-		for(int i=0;i<75;i++){
+		while(sorteio1.getVencedor() == -1){
 			sorteio1.roleta();
 		}
 		
