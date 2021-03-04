@@ -26,7 +26,8 @@ package bingo;
 public class Jogador {
     
     private String userName ;
-    private int id;
+    private static int geraId = 1;
+    private final int id;
     private int cartelaAssoc;
 	
 	/**
@@ -36,9 +37,9 @@ public class Jogador {
 	 *
 	 * @author Ketleen Anne Faria
 	 */
-    public Jogador(String userName, int id) {
+    public Jogador(String userName) {
         this.userName = userName;
-        this.id = id;   
+        this.id = geraId++;   
         this.cartelaAssoc = id;
     }
 	
@@ -72,7 +73,7 @@ public class Jogador {
         return id;
     }
     
-    	/**
+    /**
     * Retorna o id da cartela associada ao Jogador
     * @return cartelaAssoc
     * 

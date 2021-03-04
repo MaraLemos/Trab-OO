@@ -35,16 +35,18 @@ public class Sorteio {
     private String tipoCartela;
     private int qtdJogadores;
     private int qtdNumSorteados;
+    
 	/**
 	 * Construtor da classe Sorteio
+         * @param tipo Recebe se o jogo será iniciado como cartela cheia ou cartela linha/coluna
 	 *
 	 * @author Mara de Lemos Gomes
 	 */
     public Sorteio(String tipo) {
         this.jogadores = new ArrayList<>();
-		this.cartelas = new ArrayList<>();
-		this.numSorteados = new int[75];
-		this.vencedor = -1;
+        this.cartelas = new ArrayList<>();
+	this.numSorteados = new int[75];
+	this.vencedor = -1;
         this.tipoCartela = tipo;
         this.qtdJogadores = 0;
         this.qtdNumSorteados = 0;
@@ -73,13 +75,14 @@ public class Sorteio {
         }
         
         if(i == jogadores.size()){
-            jogadores.add(new Jogador(nome, qtdJogadores));
+            Jogador aux = new Jogador(nome);
+            jogadores.add(aux);
         
             if(tipoCartela.compareTo("cheia") == 0){
-                cartelas.add(new CartelaCheia(qtdJogadores));
+                cartelas.add(new CartelaCheia(aux.getCartelaAssoc()));
             }
             else{
-                cartelas.add(new CartelaLinha(qtdJogadores));
+                cartelas.add(new CartelaLinha(aux.getCartelaAssoc()));
             }
 
             this.qtdJogadores++;
@@ -128,6 +131,7 @@ public class Sorteio {
     public void imprimeJogadores(){
         for(int i = 0; i < jogadores.size(); i++){
             System.out.println(jogadores.get(i).getUserName());
+            System.out.println(jogadores.get(i).getId());
             cartelas.get(i).imprimeCartela();   
         }
     }
@@ -180,7 +184,7 @@ public class Sorteio {
             for(int j = 0; j < cartelas.size(); j++){
                 cartelas.get(j).marcaNum(numero);
                 if(cartelas.get(j).verificaVitoria() == true){
-					JOptionPane.showConfirmDialog(null, " Parabéns " + jogadores.get(j).getUserName() + "! Você ganhou!", " VITÓRIA !" ,JOptionPane.DEFAULT_OPTION);
+					JOptionPane.showConfirmDialog(null, " Parabéns " + jogadores.get(j).getUserName() + "! Você ganhou!", " VITÓRIA !",JOptionPane.DEFAULT_OPTION);
 					vencedor = j;
                 }
             }
@@ -201,10 +205,11 @@ public class Sorteio {
         sorteio1.insereJogador("Maria");
         sorteio1.insereJogador("Joao");
         sorteio1.insereJogador("Joao");
+        sorteio1.insereJogador("Carlos");
         System.out.println(sorteio1.getQtdJogadores());
         sorteio1.imprimeJogadores();
         
-        //sorteio1.RemoveJogador(0);
+        sorteio1.RemoveJogador(0);
         //System.out.println(sorteio1.getQtdJogadores());
         
 		while(sorteio1.getVencedor() == -1){
