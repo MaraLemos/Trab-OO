@@ -13,11 +13,11 @@ import javax.swing.*;
  *
  * @author ketleen
  */
-public class Tela extends JFrame {
+public class TelaInicial extends JFrame {
 
     private final JPanel painelBingo;
     private final JLabel bingo;
-    public Tela() {
+    public TelaInicial() {
         this.painelBingo = new JPanel();
         this.bingo = new JLabel();
     }
@@ -37,7 +37,7 @@ public class Tela extends JFrame {
 
     public static void main(String[] args) {
 
-        Tela telainicial = new Tela();
+        TelaInicial telainicial = new TelaInicial();
 
         telainicial.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         telainicial.setExtendedState(MAXIMIZED_BOTH);

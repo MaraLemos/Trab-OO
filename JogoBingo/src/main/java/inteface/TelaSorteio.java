@@ -25,7 +25,7 @@ import javax.swing.*;
  *
  * @author Mara de Lemos Gomes
  */
-public class TelaSorteio implements ActionListener{
+public class TelaSorteio implements ActionListener, InterfaceTela  {
     
     private JFrame pag = new JFrame();
     private JButton botaoGirar = new JButton("Gire a roleta");
@@ -34,20 +34,21 @@ public class TelaSorteio implements ActionListener{
     public TelaSorteio(){
         
         pag.setTitle("Sorteio"); //Define o titulo do frame
-        pag.setSize(1920,1080); //Define o tamanho do frame
+        pag.setSize(960,720); //Define o tamanho do frame
         pag.setLocationRelativeTo(null); //Centralizar o frame
         pag.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //Encerrar a aplicação ao clicar em x
         pag.setResizable(false); //Cancelar(false) o redimensionamento do frame
         pag.setVisible(true); //Visibilidade do frame
         mostra();
     }
-    private void mostra(){
+    @Override
+    public void mostra(){
         Container principal = pag.getContentPane();
         principal.setLayout(null);
         principal.setBackground(Color.white);
         JLabel label = new JLabel();
         label.setIcon(new ImageIcon("imagens/TextoNumSorteados.png"));
-        label.setLocation(700, 0);
+        label.setLocation(380, 0);
         label.setSize(453, 75);
         principal.add(label);
        
