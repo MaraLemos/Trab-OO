@@ -18,6 +18,7 @@
  
 package bingo;
 
+import inteface.*;
 import java.util.*;
 import javax.swing.JOptionPane;
 
@@ -184,23 +185,24 @@ public class Sorteio {
             for(int j = 0; j < cartelas.size(); j++){
                 cartelas.get(j).marcaNum(numero);
                 if(cartelas.get(j).verificaVitoria() == true){
-					JOptionPane.showConfirmDialog(null, " Parabéns " + jogadores.get(j).getUserName() + "! Você ganhou!", " VITÓRIA !",JOptionPane.DEFAULT_OPTION);
-					vencedor = j;
+                    JOptionPane.showConfirmDialog(null, " Parabéns " + jogadores.get(j).getUserName() + "! Você ganhou!", " VITÓRIA !",JOptionPane.DEFAULT_OPTION);
+                    vencedor = j;
                 }
             }
     }
     
-	/**
+    /**
      * Retorna o id do Jogador vencedor, ou -1 se não existe um vencedor
      * @return vencedor
-	 *
+     *
      * @author Mara de Lemos Gomes
      */
-	public int getVencedor(){
-		return vencedor;
-	}
-	
+    public int getVencedor(){
+	return vencedor;
+    }
+      
     public static void main(String[] args){
+        /*
         Sorteio sorteio1 = new Sorteio("cheia"); 
         sorteio1.insereJogador("Maria");
         sorteio1.insereJogador("Joao");
@@ -217,6 +219,8 @@ public class Sorteio {
 		}
 		
         sorteio1.imprimeJogadores();
+        */
+        TelaSorteio teste = new TelaSorteio();
         
     } 
 }
