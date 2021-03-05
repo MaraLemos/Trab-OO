@@ -18,16 +18,19 @@
 
 package inteface;
 import java.awt.*;
+import java.awt.event.*;
 import javax.swing.*;
 
 /**
  *
  * @author Mara de Lemos Gomes
  */
-public class TelaSorteio{
+public class TelaSorteio implements ActionListener{
     
     private JFrame pag = new JFrame();
-    
+    private JButton botaoGirar = new JButton("Gire a roleta");
+    private JButton botaoParar = new JButton("Parar");
+           
     public TelaSorteio(){
         
         pag.setTitle("Sorteio"); //Define o titulo do frame
@@ -86,11 +89,27 @@ public class TelaSorteio{
        principal.add(bolaVermelha);
        
        //Botão de sortear
-       JLabel botaoGirar = new JLabel();
        botaoGirar.setIcon(new ImageIcon("imagens/BotaoGireARoleta.png"));
-       botaoGirar.setSize(200, 35);
-       botaoGirar.setLocation(60,275);
+       botaoGirar.setBackground(Color.black);
+       botaoGirar.setSize(220, 35);
+       botaoGirar.setLocation(50,275);
+       botaoGirar.setVisible(true);
        principal.add(botaoGirar);
+       botaoGirar.addActionListener(this);
+       
+       //Botão parar
+       botaoParar.setIcon(new ImageIcon("imagens/BotaoPararRoleta.png"));
+       botaoParar.setSize(220, 35);
+       botaoParar.setLocation(60,275);
+       botaoParar.add(botaoParar);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if(e.getSource() == botaoGirar){
+            botaoGirar.setVisible(false);
+            botaoParar.setVisible(true);
+        }
     }
     
 }
