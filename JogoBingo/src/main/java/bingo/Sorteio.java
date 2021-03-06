@@ -32,7 +32,7 @@ public class Sorteio {
     private  List<Jogador> jogadores;
     private List<Cartela> cartelas;
     private int[] numSorteados;
-    private int vencedor;
+    private String vencedor;
     private String tipoCartela;
     private int qtdJogadores;
     private int qtdNumSorteados;
@@ -47,7 +47,7 @@ public class Sorteio {
         this.jogadores = new ArrayList<>();
         this.cartelas = new ArrayList<>();
 	this.numSorteados = new int[75];
-	this.vencedor = -1;
+	this.vencedor = "";
         this.tipoCartela = tipo;
         this.qtdJogadores = 0;
         this.qtdNumSorteados = 0;
@@ -152,43 +152,43 @@ public class Sorteio {
      * 
      * @author Ary de Paula Canuto Neto
      */
-    public void roleta(){
+    public int roleta(){
         int i;
-        boolean controle = true;
-		Random random = new Random();
-		int numero = random.nextInt(75) + 1;
+	Random random = new Random();
+	int numero = random.nextInt(75) + 1;
         
-        //Verifica se um número já foi sorteado, caso contrario adiciona ao vetor de sorteados
-        while(controle == true){
-            if(qtdNumSorteados == 0){
-                numSorteados[0] = numero;
-                qtdNumSorteados++;
-                controle = false;
-            }else{
-                for(i=0; i < qtdNumSorteados; i++)
-                    if(numSorteados[i] == numero){
-                        numero = random.nextInt(75) + 1;
-                        break;
-                    }
-                
-                //Vetor foi todo percorrido e o número não está vetor
-                if(i == qtdNumSorteados){
-                    numSorteados[qtdNumSorteados] = numero;
-                    qtdNumSorteados++;
-                    controle = false;
-                }
+        //Verifica se um número já foi sorteado
+        for(i=0; i < qtdNumSorteados; i++){
+            if(numSorteados[i] == numero){
+                return 0; //Numero já foi sorteado
             }
         }
         
-        //marca o numero e checa se a cartela cumpre os requisitos para ganhar o jogo
+        //Vetor foi todo percorrido e o número não está vetor
+        numSorteados[qtdNumSorteados] = numero;
+        qtdNumSorteados++;
+            
+        return numero;
+    }
+    
+    /**
+     * Verifica se o número sorteado está em alguma cartela
+     * 
+     * @author Mara de Lemos Gomes
+     */
+    public boolean verificaCartelas(int numero){
+        if(numero == 0)
+            return false;
         
+         //marca o numero e checa se a cartela cumpre os requisitos para ganhar o jogo
             for(int j = 0; j < cartelas.size(); j++){
                 cartelas.get(j).marcaNum(numero);
                 if(cartelas.get(j).verificaVitoria() == true){
-                    JOptionPane.showConfirmDialog(null, " Parabéns " + jogadores.get(j).getUserName() + "! Você ganhou!", " VITÓRIA !",JOptionPane.DEFAULT_OPTION);
-                    vencedor = j;
+                    vencedor = jogadores.get(j).getUserName();
+                    return true;
                 }
             }
+        return false;
     }
     
     /**
@@ -197,29 +197,12 @@ public class Sorteio {
      *
      * @author Mara de Lemos Gomes
      */
-    public int getVencedor(){
+    public String getVencedor(){
 	return vencedor;
     }
       
     public static void main(String[] args){
-        /*
-        Sorteio sorteio1 = new Sorteio("cheia"); 
-        sorteio1.insereJogador("Maria");
-        sorteio1.insereJogador("Joao");
-        sorteio1.insereJogador("Joao");
-        sorteio1.insereJogador("Carlos");
-        System.out.println(sorteio1.getQtdJogadores());
-        sorteio1.imprimeJogadores();
         
-        sorteio1.RemoveJogador(0);
-        //System.out.println(sorteio1.getQtdJogadores());
-        
-		while(sorteio1.getVencedor() == -1){
-			sorteio1.roleta();
-		}
-		
-        sorteio1.imprimeJogadores();
-        */
         TelaSorteio teste = new TelaSorteio();
         
     } 
