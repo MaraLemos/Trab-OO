@@ -125,16 +125,15 @@ public class Sorteio {
     }
     
     /**
-     * Imprime todos os jogadores da lista e sua cartela
+     * Imprime o jogador da lista e sua cartela que corresponde ao indice recebido
      * 
      * @author Mara de Lemos Gomes
      */
-    public void imprimeJogadores(){
-        for(int i = 0; i < jogadores.size(); i++){
-            System.out.println(jogadores.get(i).getUserName());
-            System.out.println(jogadores.get(i).getId());
-            cartelas.get(i).imprimeCartela();   
-        }
+    public String imprimeJogador(int indice){
+        String aux = "";
+        aux += cartelas.get(indice).imprimeCartela();
+        aux += "<center>"+jogadores.get(indice).getUserName()+"<center>";
+        return aux;
     }
     
     /**
@@ -204,6 +203,5 @@ public class Sorteio {
     public static void main(String[] args){
         
         TelaSorteio teste = new TelaSorteio();
-        
     } 
 }

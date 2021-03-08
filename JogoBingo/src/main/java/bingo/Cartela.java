@@ -71,7 +71,7 @@ public abstract class Cartela {
         if(i != 99){
             numMarcados++;
             //O número é marcado com um sinal de menos
-            numeros[i] *= -1;
+            numeros[i] *= (-1);
         }
     }
     
@@ -181,12 +181,92 @@ public abstract class Cartela {
             
     }
     
-    public void imprimeCartela(){
-        System.out.println("Cartela:");
-        for(int i=0; i< 24; i++){
-            System.out.print(numeros[i] + " ");
+    public String imprimeCartela(){
+        String cartela = "<br>&nbsp;";
+        int i,num;
+        for(i=0;i<5;i++){
+            num = numeros[i];
+            if(num < 0){
+                cartela += "<font color=\"red\">";
+                num = num*(-1);
+            }
+            if(num < 10){
+                String aux = "0"+num+"&nbsp;&nbsp;";
+                cartela += aux;
+            }else{
+                cartela += num+"&nbsp;&nbsp;";
+            }
+            num = numeros[i];
+            if(num < 0){
+                cartela += "</font>";
+            }
         }
-        System.out.println("");
+        cartela += "<br>&nbsp;";
+        for(i = 5;i<10;i++){
+            num = numeros[i];
+            if(num < 0){
+                cartela += "<font color=\"red\">";
+                num = num*(-1);
+            }
+            cartela += num + "&nbsp;&nbsp;";
+            num = numeros[i];
+            if(num < 0){
+                cartela += "</font>";
+            }
+        }
+        cartela += "<br>&nbsp;";
+        for(i = 10;i<12;i++){
+            num = numeros[i];
+            if(num < 0){
+                cartela += "<font color=\"red\">";
+                num = num*(-1);
+            }
+            cartela += num + "&nbsp;&nbsp;";
+            num = numeros[i];
+            if(num < 0){
+                cartela += "</font>";
+            }
+        }
+        cartela += " &emsp;&ensp;";
+        for(i = 12;i<14;i++){
+            num = numeros[i];
+            if(num < 0){
+                cartela += "<font color=\"red\">";
+                num = num*(-1);
+            }
+            cartela += num + "&nbsp;&nbsp;";
+            num = numeros[i];
+            if(num < 0){
+                cartela += "</font>";
+            }
+        }
+        cartela += "<br>&nbsp;";
+        for(i = 14;i<19;i++){
+            num = numeros[i];
+            if(num < 0){
+                cartela += "<font color=\"red\">";
+                num = num*(-1);
+            }
+            cartela += num + "&nbsp;&nbsp;";
+            num = numeros[i];
+            if(num < 0){
+                cartela += "</font>";
+            }
+        }
+        cartela += "<br>&nbsp;";
+        for(i = 19;i<24;i++){
+            num = numeros[i];
+            if(num < 0){
+                cartela += "<font color=\"red\">";
+                num = num*(-1);
+            }
+            cartela += num + "&nbsp;&nbsp;";
+            num = numeros[i];
+            if(num < 0){
+                cartela += "</font>";
+            }
+        }
+        return cartela;
     }  
     
 }
