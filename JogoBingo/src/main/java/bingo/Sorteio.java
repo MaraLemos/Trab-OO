@@ -21,6 +21,9 @@ package bingo;
 import inteface.*;
 import java.util.*;
 import javax.swing.JOptionPane;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 
 /**
  *
@@ -199,9 +202,37 @@ public class Sorteio {
     public String getVencedor(){
 	return vencedor;
     }
-      
+    
+    /**
+     * Faz a leitura do arquivo txt que possui userNames de jogadores e os adiciona ao sorteio
+     * Pode gerar a exceção FileNotFoundException
+     *
+     * @author Mara de Lemos Gomes
+     */
+    public void leArquivo() throws IOException{
+        BufferedReader arquivo = new BufferedReader(new FileReader("bancoDeDados/jogadores.txt"));
+        String linha = "";
+        while(true){
+            if(linha != null){
+                insereJogador(linha);
+            }else{
+                break;
+            }
+            linha = arquivo.readLine();
+        }
+        arquivo.close();
+    }
+    
     public static void main(String[] args){
         
+        /*
+        try{
+            sorteio1.leArquivo();
+        }catch(IOException ex){
+            JOptionPane.showConfirmDialog(null, "Banco de dados não encontrado! A aplicação será encerrada.", "ERRO!",JOptionPane.DEFAULT_OPTION);
+            System.exit(0);
+        }
+        */
         TelaSorteio teste = new TelaSorteio();
     } 
 }

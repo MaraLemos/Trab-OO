@@ -53,6 +53,9 @@ public class TelaSorteio implements ActionListener, InterfaceTela  {
         sorteio.insereJogador("Maria");
         sorteio.insereJogador("Joao");
         sorteio.insereJogador("Carlos");
+        sorteio.insereJogador("Maite");
+        sorteio.insereJogador("Mara");
+        sorteio.insereJogador("Fabio");
         pag = new JFrame();
         principal = pag.getContentPane();
         botaoGirar = new JButton("Gire a roleta");
@@ -82,7 +85,7 @@ public class TelaSorteio implements ActionListener, InterfaceTela  {
         pag.setSize(960,720); //Define o tamanho do frame
         pag.setLocationRelativeTo(null); //Centralizar o frame
         pag.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //Encerrar a aplicação ao clicar em x
-        pag.setResizable(false); //Cancelar(false) o redimensionamento do frame
+        //pag.setResizable(false); //Cancelar(false) o redimensionamento do frame
         pag.setVisible(true); //Visibilidade do frame
         mostra();
     }
@@ -180,22 +183,21 @@ public class TelaSorteio implements ActionListener, InterfaceTela  {
        principal.add(num71);principal.add(num72);principal.add(num73);principal.add(num74);principal.add(num75);
        
        //Cartelas
-       imprimeCartelas();
-       
+       for(int i=0;i<sorteio.getQtdJogadores();i++){
+           principal.add(imprimeCartela(i));
+       }
     }
     
-    public void imprimeCartelas(){
-       for(int i=0;i<sorteio.getQtdJogadores();i++){
-            JLabel cartela = new JLabel();
-            cartela.setIcon(new ImageIcon("./imagens/Cartela.png"));
-            cartela.setSize(211,250);
-            cartela.setLocation(50 + i*211, 370);
-            JLabel textoCartela = new JLabel("<html><body><font size="+6+"><br>"+sorteio.imprimeJogador(i)+"</font></body></html>");
-            textoCartela.setLayout(null);
-            textoCartela.setSize(211,250);
-            cartela.add(textoCartela);
-            principal.add(cartela);
-       }
+    public JLabel imprimeCartela(int i){
+        JLabel cartela = new JLabel();
+        cartela.setIcon(new ImageIcon("./imagens/Cartela.png"));
+        cartela.setSize(211,250);
+        cartela.setLocation(50 + i*211, 370);
+        JLabel textoCartela = new JLabel("<html><body><font size="+6+"><br>"+sorteio.imprimeJogador(i)+"</font></body></html>");
+        textoCartela.setLayout(null);
+        textoCartela.setSize(211,250);
+        cartela.add(textoCartela);
+        return cartela;
     }
     public JLabel organizaNumeros(JLabel x,int coluna,int linha,int imagem){
         x.setIcon(new ImageIcon("./imagens/Numeros/"+imagem+".png")); 
@@ -405,7 +407,7 @@ public class TelaSorteio implements ActionListener, InterfaceTela  {
             botaoParar.setVisible(false);
             retornaPosicaoInicial();
             sorteia();
-            imprimeCartelas();
+            //imprimeCartelas();
         }
     }
     
