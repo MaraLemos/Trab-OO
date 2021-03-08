@@ -5,10 +5,32 @@
  */
 package inteface;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JFrame;
+
+
 /**
  *
  * @author arypa
  */
-public class TelaJogadores {
+public class TelaJogadores  extends JFrame implements ActionListener, InterfaceTela{
+
     
+/**
+ *
+ * @author ketleen
+     * @param ae
+ */
+       
+    @Override
+    public void actionPerformed(ActionEvent ae) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void mostra() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+   
 }
