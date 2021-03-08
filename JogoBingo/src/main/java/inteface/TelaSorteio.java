@@ -30,7 +30,7 @@ import bingo.Sorteio;
 public class TelaSorteio implements ActionListener, InterfaceTela  {
     
     private JFrame pag;
-    private Container principal;
+    private JDesktopPane principal;
     private JButton botaoGirar;
     private JButton botaoParar;
     private JLabel bolaAmarela;
@@ -46,12 +46,14 @@ public class TelaSorteio implements ActionListener, InterfaceTela  {
             num46,num47,num48,num49,num50,num51,num52,num53,num54,num55,num56,num57,num58,num59,num60,
             num61,num62,num63,num64,num65,num66,num67,num68,num69,num70,num71,num72,num73,num74,num75;
     Sorteio sorteio;
+    JInternalFrame cartelas;
     
     public TelaSorteio(Sorteio sorteio1){
         
         sorteio = sorteio1;
         pag = new JFrame();
-        principal = pag.getContentPane();
+        principal = new JDesktopPane();
+        //cartelas = new JInternalFrame();
         botaoGirar = new JButton("Gire a roleta");
         botaoParar = new JButton("Parar");
         bolaAmarela = new JLabel();
@@ -176,23 +178,11 @@ public class TelaSorteio implements ActionListener, InterfaceTela  {
        principal.add(num66);principal.add(num67);principal.add(num68);principal.add(num69);principal.add(num70);
        principal.add(num71);principal.add(num72);principal.add(num73);principal.add(num74);principal.add(num75);
        
-       //Cartelas
-       for(int i=0;i<sorteio.getQtdJogadores();i++){
-           principal.add(imprimeCartela(i));
-       }
+       cartelas = new TelaInternaSorteio(sorteio);
+       principal.add(cartelas);
+       pag.add(principal);
     }
     
-    public JLabel imprimeCartela(int i){
-        JLabel cartela = new JLabel();
-        cartela.setIcon(new ImageIcon("./imagens/Cartela.png"));
-        cartela.setSize(211,250);
-        cartela.setLocation(50 + i*211, 370);
-        JLabel textoCartela = new JLabel("<html><body><font size="+6+"><br>"+sorteio.imprimeJogador(i)+"</font></body></html>");
-        textoCartela.setLayout(null);
-        textoCartela.setSize(211,250);
-        cartela.add(textoCartela);
-        return cartela;
-    }
     public JLabel organizaNumeros(JLabel x,int coluna,int linha,int imagem){
         x.setIcon(new ImageIcon("./imagens/Numeros/"+imagem+".png")); 
         x.setSize(40,40);
@@ -357,6 +347,9 @@ public class TelaSorteio implements ActionListener, InterfaceTela  {
             num75.setIcon(new ImageIcon("imagens/Numeros/75v.png"));
         
         if(sorteio.verificaCartelas(x)){
+            cartelas.dispose();
+            cartelas = new TelaInternaSorteio(sorteio);
+            principal.add(cartelas);
             JOptionPane.showConfirmDialog(null, " Parabéns " + sorteio.getVencedor() + "! Você ganhou!", " VITÓRIA !",JOptionPane.DEFAULT_OPTION);
             System.exit(0);
         }
@@ -401,7 +394,10 @@ public class TelaSorteio implements ActionListener, InterfaceTela  {
             botaoParar.setVisible(false);
             retornaPosicaoInicial();
             sorteia();
-            //imprimeCartelas();
+            
+            cartelas.dispose();
+            cartelas = new TelaInternaSorteio(sorteio);
+            principal.add(cartelas);
         }
     }
     
