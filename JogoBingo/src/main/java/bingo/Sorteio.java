@@ -91,6 +91,12 @@ public class Sorteio {
 
             this.qtdJogadores++;
         }
+		
+		try{
+            abrirArquivoParaEscrita(nome);
+        }catch(IOException ex){
+			//Não vai gerar a exceção pois a leitura do arquivo garante a existência dele
+        }
     }
     
     public void RemoveJogador(int id) {
@@ -222,7 +228,27 @@ public class Sorteio {
         }
         arquivo.close();
     }
-    
+	
+    /**
+     * Salva jogador no banco de dados
+     * Pode gerar a exceção FileNotFoundException
+     *
+     * @author Thiago Goulart da Fonseca
+     */
+	public static void abrirArquivoParaEscrita(String nome) throws IOException{
+        FileWriter fwArquivo;
+        BufferedWriter bwArquivo;
+
+       //Função leitura garante que arquivo existe, abrindo arquivo
+            fwArquivo = new FileWriter("bancoDeDados/jogadores");
+            bwArquivo = new BufferedWriter(fwArquivo);
+
+            bwArquivo.append(nome + '\n');
+
+		bwArquivo.close();
+		fwArquivo.close();
+    }
+	
     public static void main(String[] args){
         
         /*
