@@ -22,7 +22,11 @@ import inteface.*;
 import java.util.*;
 import javax.swing.JOptionPane;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 
 /**
@@ -59,11 +63,12 @@ public class Sorteio {
     /**
      * Insere jogador no bingo
      * @param nome
+     * @param pai //Recebe quem está chamando a função
      * 
      * @author Ary de Paula Canuto Neto
      */
     
-    public void insereJogador(String nome){
+    public void insereJogador(String nome, String pai){
         nome = nome.toUpperCase().trim();
         
         String nome1;
@@ -90,12 +95,14 @@ public class Sorteio {
             }
 
             this.qtdJogadores++;
-        }
-		
-		try{
-            abrirArquivoParaEscrita(nome);
-        }catch(IOException ex){
-			//Não vai gerar a exceção pois a leitura do arquivo garante a existência dele
+            
+            if(pai.compareTo("arquivo") != 0){
+                try{
+                    abrirArquivoParaEscrita(nome);
+                }catch(IOException ex){
+                    //Não vai gerar a exceção pois a leitura do arquivo garante a existência dele
+                }
+            }
         }
     }
     
@@ -105,6 +112,7 @@ public class Sorteio {
             jogadores.remove(id);
             cartelas.remove(id);
             this.qtdJogadores--;
+            atualizaBD();
         }else{
             JOptionPane.showConfirmDialog(null, " Jogador não existe ! ", " ERRO !" ,JOptionPane.DEFAULT_OPTION);
         }
@@ -120,6 +128,7 @@ public class Sorteio {
     
     public void editaJogador(String nome ,int id){
         int i;
+        nome = nome.toUpperCase().trim();
         
         for(i = 0; i < jogadores.size(); i++){
             if(jogadores.get(i).getUserName().compareTo(nome) == 0){
@@ -130,6 +139,7 @@ public class Sorteio {
         if(i == jogadores.size()){
             jogadores.get(id).setUserName(nome);
             JOptionPane.showConfirmDialog(null, " Nome alterado com Sucesso ! ", " SUCESSO !" ,JOptionPane.DEFAULT_OPTION);
+            atualizaBD();
         }
     }
     
@@ -218,13 +228,14 @@ public class Sorteio {
     public void leArquivo() throws IOException{
         BufferedReader arquivo = new BufferedReader(new FileReader("bancoDeDados/jogadores.txt"));
         String linha = "";
-        while(true){
-            if(linha != null){
-                insereJogador(linha);
-            }else{
-                break;
-            }
+        
+        //Enquanto houver mais linhas
+        while(arquivo.ready()){
             linha = arquivo.readLine();
+            
+            if(linha != null && linha != ""){
+                insereJogador(linha,"arquivo");
+            }
         }
         arquivo.close();
     }
@@ -232,33 +243,60 @@ public class Sorteio {
     /**
      * Salva jogador no banco de dados
      * Pode gerar a exceção FileNotFoundException
+     * @param nome
      *
      * @author Thiago Goulart da Fonseca
      */
-	public static void abrirArquivoParaEscrita(String nome) throws IOException{
+    public static void abrirArquivoParaEscrita(String nome) throws IOException{
         FileWriter fwArquivo;
         BufferedWriter bwArquivo;
 
-       //Função leitura garante que arquivo existe, abrindo arquivo
-            fwArquivo = new FileWriter("bancoDeDados/jogadores");
-            bwArquivo = new BufferedWriter(fwArquivo);
+       //Função leitura garante que arquivo existe, abrindo arquivo, passando true para acrescentar dados e não substituir
+        fwArquivo = new FileWriter("bancoDeDados/jogadores.txt",true);
+        bwArquivo = new BufferedWriter(fwArquivo);
 
-            bwArquivo.append(nome + '\n');
-
-		bwArquivo.close();
-		fwArquivo.close();
+        bwArquivo.write(nome);
+        bwArquivo.newLine();
+            
+	bwArquivo.close();
+        fwArquivo.close();
     }
-	
+    
+    /**
+     * Atualiza arquivo em caso de exclusão ou alteração de um jogador
+     *
+     *
+     * @author Mara de Lemos Gomes
+     */
+    public void atualizaBD(){
+        try{
+        FileWriter arquivo = new FileWriter("bancoDeDados/jogadores.txt",false);
+        BufferedWriter bwArquivo = new BufferedWriter(arquivo);
+        String nome = "";
+        for(int i = 0; i < jogadores.size(); i++){
+            nome = jogadores.get(i).getUserName();
+            bwArquivo.write(nome);
+            bwArquivo.newLine();
+        }
+        
+        bwArquivo.close();
+        arquivo.close();
+        
+        }catch(IOException ex){
+            //Leitura de arquivo garante que arquivo existe
+        }
+    }
     public static void main(String[] args){
         
-        /*
+        Sorteio sorteio = new Sorteio("linha");
+        
         try{
-            sorteio1.leArquivo();
+            sorteio.leArquivo();
         }catch(IOException ex){
             JOptionPane.showConfirmDialog(null, "Banco de dados não encontrado! A aplicação será encerrada.", "ERRO!",JOptionPane.DEFAULT_OPTION);
             System.exit(0);
         }
-        */
-        TelaSorteio teste = new TelaSorteio();
+        
+        TelaSorteio teste = new TelaSorteio(sorteio);
     } 
 }

@@ -47,15 +47,9 @@ public class TelaSorteio implements ActionListener, InterfaceTela  {
             num61,num62,num63,num64,num65,num66,num67,num68,num69,num70,num71,num72,num73,num74,num75;
     Sorteio sorteio;
     
-    public TelaSorteio(){
+    public TelaSorteio(Sorteio sorteio1){
         
-        sorteio = new Sorteio("linha");
-        sorteio.insereJogador("Maria");
-        sorteio.insereJogador("Joao");
-        sorteio.insereJogador("Carlos");
-        sorteio.insereJogador("Maite");
-        sorteio.insereJogador("Mara");
-        sorteio.insereJogador("Fabio");
+        sorteio = sorteio1;
         pag = new JFrame();
         principal = pag.getContentPane();
         botaoGirar = new JButton("Gire a roleta");
