@@ -81,7 +81,7 @@ public class TelaSorteio implements ActionListener, InterfaceTela  {
         pag.setSize(960,720); //Define o tamanho do frame
         pag.setLocationRelativeTo(null); //Centralizar o frame
         pag.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //Encerrar a aplicação ao clicar em x
-        //pag.setResizable(false); //Cancelar(false) o redimensionamento do frame
+        pag.setResizable(false); //Cancelar(false) o redimensionamento do frame
         pag.setVisible(true); //Visibilidade do frame
         mostra();
     }

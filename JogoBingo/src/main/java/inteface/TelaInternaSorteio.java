@@ -7,6 +7,7 @@ package inteface;
 
 import bingo.Sorteio;
 import java.awt.Color;
+import java.awt.FlowLayout;
 import javax.swing.*;
 
 /**
@@ -16,6 +17,7 @@ import javax.swing.*;
 public class TelaInternaSorteio extends JInternalFrame{
     
     Sorteio sorteio;
+    JScrollPane rolagem;
     
     public TelaInternaSorteio(Sorteio sorteio1){
         sorteio = sorteio1;
@@ -25,11 +27,15 @@ public class TelaInternaSorteio extends JInternalFrame{
         setLocation(0, 370);
         setResizable(false);
         setBackground(Color.white);
+        setLayout(new FlowLayout());
         
+        rolagem = new JScrollPane();
+           //rolagem.setLayout();
         //Cartelas
        for(int i=0;i<sorteio.getQtdJogadores();i++){
            this.add(imprimeCartela(i));
        }
+      
        
     }
     public JLabel imprimeCartela(int i){
