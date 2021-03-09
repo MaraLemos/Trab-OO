@@ -41,6 +41,10 @@ public class Sorteio {
     private int[] numSorteados;
     private String vencedor;
     private String tipoCartela;
+
+    public void setTipoCartela(String tipoCartela) {
+        this.tipoCartela = tipoCartela;
+    }
     private int qtdJogadores;
     private int qtdNumSorteados;
     
@@ -59,6 +63,10 @@ public class Sorteio {
         this.qtdJogadores = 0;
         this.qtdNumSorteados = 0;
     }
+
+//    public void setTipoCartela(String tipoCartela) {
+//        this.tipoCartela = tipoCartela;
+//    }
     
     /**
      * Insere jogador no bingo
