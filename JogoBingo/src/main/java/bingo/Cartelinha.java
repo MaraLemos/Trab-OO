@@ -33,193 +33,380 @@ public class Cartelinha extends JInternalFrame{
     public void monta(){
         JLabel titulo = new JLabel();
         titulo.setLayout(new GridLayout(1,5));
-        titulo.add(new JLabel("B"));
-        titulo.add(new JLabel("I"));
-        titulo.add(new JLabel("N"));
-        titulo.add(new JLabel("G"));
-        titulo.add(new JLabel("O"));
+        JLabel B = new JLabel("B");
+        B.setHorizontalAlignment(SwingConstants.CENTER);
+        B.setVerticalAlignment(SwingConstants.CENTER);
+        titulo.add(B);
+        JLabel I = new JLabel("I");
+        I.setHorizontalAlignment(SwingConstants.CENTER);
+        I.setVerticalAlignment(SwingConstants.CENTER);
+        titulo.add(I);
+        JLabel N = new JLabel("N");
+        N.setHorizontalAlignment(SwingConstants.CENTER);
+        N.setVerticalAlignment(SwingConstants.CENTER);
+        titulo.add(N);
+        JLabel G = new JLabel("G");
+        G.setHorizontalAlignment(SwingConstants.CENTER);
+        G.setVerticalAlignment(SwingConstants.CENTER);
+        titulo.add(G);
+        JLabel O = new JLabel("O");
+        O.setHorizontalAlignment(SwingConstants.CENTER);
+        O.setVerticalAlignment(SwingConstants.CENTER);
+        titulo.add(O);
         JLabel numeros = new JLabel();
         numeros.setLayout(new GridLayout(5,5));
         int[] vet = sorteio.retornaCartela(indice);
         if(vet[0]<0){
             JLabel num = new JLabel(""+vet[0]*(-1));
             num.setForeground(Color.red);
-            numeros.add(num);
+            num.setHorizontalAlignment(SwingConstants.CENTER);
+            num.setVerticalAlignment(SwingConstants.CENTER);
+            num.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            numeros.add(num,BorderLayout.CENTER);
         }else{
-            numeros.add(new JLabel(""+vet[0]));
+            JLabel num = new JLabel(""+vet[0]);
+            num.setHorizontalAlignment(SwingConstants.CENTER);
+            num.setVerticalAlignment(SwingConstants.CENTER);
+            num.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            numeros.add(num,BorderLayout.CENTER);
         }
         if(vet[5]<0){
             JLabel num = new JLabel(""+vet[5]*(-1));
             num.setForeground(Color.red);
-            numeros.add(num);
+            num.setHorizontalAlignment(SwingConstants.CENTER);
+            num.setVerticalAlignment(SwingConstants.CENTER);
+            num.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            numeros.add(num,BorderLayout.CENTER);
         }else{
-            numeros.add(new JLabel(""+vet[5]));
+            JLabel num = new JLabel(""+vet[5]);
+            num.setHorizontalAlignment(SwingConstants.CENTER);
+            num.setVerticalAlignment(SwingConstants.CENTER);
+            num.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            numeros.add(num,BorderLayout.CENTER);
         }
         if(vet[10]<0){
             JLabel num = new JLabel(""+vet[10]*(-1));
             num.setForeground(Color.red);
-            numeros.add(num);
+            num.setHorizontalAlignment(SwingConstants.CENTER);
+            num.setVerticalAlignment(SwingConstants.CENTER);
+            num.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            numeros.add(num,BorderLayout.CENTER);
         }else{
-            numeros.add(new JLabel(""+vet[10]));
+            JLabel num = new JLabel(""+vet[10]);
+            num.setHorizontalAlignment(SwingConstants.CENTER);
+            num.setVerticalAlignment(SwingConstants.CENTER);
+            num.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            numeros.add(num,BorderLayout.CENTER);
         }
         if(vet[14]<0){
             JLabel num = new JLabel(""+vet[14]*(-1));
             num.setForeground(Color.red);
-            numeros.add(num);
+            num.setHorizontalAlignment(SwingConstants.CENTER);
+            num.setVerticalAlignment(SwingConstants.CENTER);
+            num.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            numeros.add(num,BorderLayout.CENTER);
         }else{
-            numeros.add(new JLabel(""+vet[14]));
+            JLabel num = new JLabel(""+vet[14]);
+            num.setHorizontalAlignment(SwingConstants.CENTER);
+            num.setVerticalAlignment(SwingConstants.CENTER);
+            num.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            numeros.add(num,BorderLayout.CENTER);
         }
         if(vet[19]<0){
             JLabel num = new JLabel(""+vet[19]*(-1));
             num.setForeground(Color.red);
-            numeros.add(num);
+            num.setHorizontalAlignment(SwingConstants.CENTER);
+            num.setVerticalAlignment(SwingConstants.CENTER);
+            num.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            numeros.add(num,BorderLayout.CENTER);
         }else{
-            numeros.add(new JLabel(""+vet[19]));
+            JLabel num = new JLabel(""+vet[19]);
+            num.setHorizontalAlignment(SwingConstants.CENTER);
+            num.setVerticalAlignment(SwingConstants.CENTER);
+            num.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            numeros.add(num,BorderLayout.CENTER);
         }
         if(vet[1]<0){
             JLabel num = new JLabel(""+vet[1]*(-1));
             num.setForeground(Color.red);
-            numeros.add(num);
+            num.setHorizontalAlignment(SwingConstants.CENTER);
+            num.setVerticalAlignment(SwingConstants.CENTER);
+            num.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            numeros.add(num,BorderLayout.CENTER);
         }else{
-            numeros.add(new JLabel(""+vet[1]));
+            JLabel num = new JLabel(""+vet[1]);
+            num.setHorizontalAlignment(SwingConstants.CENTER);
+            num.setVerticalAlignment(SwingConstants.CENTER);
+            num.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            numeros.add(num,BorderLayout.CENTER);
         }
         if(vet[6]<0){
             JLabel num = new JLabel(""+vet[6]*(-1));
             num.setForeground(Color.red);
-            numeros.add(num);
+            num.setHorizontalAlignment(SwingConstants.CENTER);
+            num.setVerticalAlignment(SwingConstants.CENTER);
+            num.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            numeros.add(num,BorderLayout.CENTER);
         }else{
-            numeros.add(new JLabel(""+vet[6]));
+            JLabel num = new JLabel(""+vet[6]);
+            num.setHorizontalAlignment(SwingConstants.CENTER);
+            num.setVerticalAlignment(SwingConstants.CENTER);
+            num.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            numeros.add(num,BorderLayout.CENTER);
         }
         if(vet[11]<0){
             JLabel num = new JLabel(""+vet[11]*(-1));
             num.setForeground(Color.red);
-            numeros.add(num);
+            num.setHorizontalAlignment(SwingConstants.CENTER);
+            num.setVerticalAlignment(SwingConstants.CENTER);
+            num.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            numeros.add(num,BorderLayout.CENTER);
         }else{
-            numeros.add(new JLabel(""+vet[11]));
+            JLabel num = new JLabel(""+vet[11]);
+            num.setHorizontalAlignment(SwingConstants.CENTER);
+            num.setVerticalAlignment(SwingConstants.CENTER);
+            num.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            numeros.add(num,BorderLayout.CENTER);
         }
         if(vet[15]<0){
             JLabel num = new JLabel(""+vet[15]*(-1));
             num.setForeground(Color.red);
-            numeros.add(num);
+            num.setHorizontalAlignment(SwingConstants.CENTER);
+            num.setVerticalAlignment(SwingConstants.CENTER);
+            num.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            numeros.add(num,BorderLayout.CENTER);
         }else{
-            numeros.add(new JLabel(""+vet[15]));
+            JLabel num = new JLabel(""+vet[15]);
+            num.setHorizontalAlignment(SwingConstants.CENTER);
+            num.setVerticalAlignment(SwingConstants.CENTER);
+            num.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            numeros.add(num,BorderLayout.CENTER);
         }
         if(vet[20]<0){
             JLabel num = new JLabel(""+vet[20]*(-1));
             num.setForeground(Color.red);
-            numeros.add(num);
+            num.setHorizontalAlignment(SwingConstants.CENTER);
+            num.setVerticalAlignment(SwingConstants.CENTER);
+            num.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            numeros.add(num,BorderLayout.CENTER);
         }else{
-            numeros.add(new JLabel(""+vet[20]));
+            JLabel num = new JLabel(""+vet[20]);
+            num.setHorizontalAlignment(SwingConstants.CENTER);
+            num.setVerticalAlignment(SwingConstants.CENTER);
+            num.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            numeros.add(num,BorderLayout.CENTER);
         }
         if(vet[2]<0){
             JLabel num = new JLabel(""+vet[2]*(-1));
             num.setForeground(Color.red);
-            numeros.add(num);
+            num.setHorizontalAlignment(SwingConstants.CENTER);
+            num.setVerticalAlignment(SwingConstants.CENTER);
+            num.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            numeros.add(num,BorderLayout.CENTER);
         }else{
-            numeros.add(new JLabel(""+vet[2]));
+            JLabel num = new JLabel(""+vet[2]);
+            num.setHorizontalAlignment(SwingConstants.CENTER);
+            num.setVerticalAlignment(SwingConstants.CENTER);
+            num.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            numeros.add(num,BorderLayout.CENTER);
         }
         if(vet[7]<0){
             JLabel num = new JLabel(""+vet[7]*(-1));
             num.setForeground(Color.red);
-            numeros.add(num);
+            num.setHorizontalAlignment(SwingConstants.CENTER);
+            num.setVerticalAlignment(SwingConstants.CENTER);
+            num.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            numeros.add(num,BorderLayout.CENTER);
         }else{
-            numeros.add(new JLabel(""+vet[7]));
+            JLabel num = new JLabel(""+vet[7]);
+            num.setHorizontalAlignment(SwingConstants.CENTER);
+            num.setVerticalAlignment(SwingConstants.CENTER);
+            num.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            numeros.add(num,BorderLayout.CENTER);
         }
-        numeros.add(new JLabel("X"));
+        
+        JLabel centro = new JLabel();
+        centro.setIcon(new ImageIcon("imagens/Cartela.png"));
+        centro.setHorizontalAlignment(SwingConstants.CENTER);
+        centro.setVerticalAlignment(SwingConstants.CENTER);
+        centro.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        numeros.add(centro);
+        
         if(vet[16]<0){
             JLabel num = new JLabel(""+vet[16]*(-1));
             num.setForeground(Color.red);
-            numeros.add(num);
+            num.setHorizontalAlignment(SwingConstants.CENTER);
+            num.setVerticalAlignment(SwingConstants.CENTER);
+            num.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            numeros.add(num,BorderLayout.CENTER);
         }else{
-            numeros.add(new JLabel(""+vet[16]));
+            JLabel num = new JLabel(""+vet[16]);
+            num.setHorizontalAlignment(SwingConstants.CENTER);
+            num.setVerticalAlignment(SwingConstants.CENTER);
+            num.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            numeros.add(num,BorderLayout.CENTER);
         }
         if(vet[21]<0){
             JLabel num = new JLabel(""+vet[21]*(-1));
             num.setForeground(Color.red);
-            numeros.add(num);
+            num.setHorizontalAlignment(SwingConstants.CENTER);
+            num.setVerticalAlignment(SwingConstants.CENTER);
+            num.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            numeros.add(num,BorderLayout.CENTER);
         }else{
-            numeros.add(new JLabel(""+vet[21]));
+            JLabel num = new JLabel(""+vet[21]);
+            num.setHorizontalAlignment(SwingConstants.CENTER);
+            num.setVerticalAlignment(SwingConstants.CENTER);
+            num.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            numeros.add(num,BorderLayout.CENTER);
         }
         if(vet[3]<0){
             JLabel num = new JLabel(""+vet[3]*(-1));
             num.setForeground(Color.red);
-            numeros.add(num);
+            num.setHorizontalAlignment(SwingConstants.CENTER);
+            num.setVerticalAlignment(SwingConstants.CENTER);
+            num.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            numeros.add(num,BorderLayout.CENTER);
         }else{
-            numeros.add(new JLabel(""+vet[3]));
+            JLabel num = new JLabel(""+vet[3]);
+            num.setHorizontalAlignment(SwingConstants.CENTER);
+            num.setVerticalAlignment(SwingConstants.CENTER);
+            num.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            numeros.add(num,BorderLayout.CENTER);
         }
         if(vet[8]<0){
             JLabel num = new JLabel(""+vet[8]*(-1));
             num.setForeground(Color.red);
-            numeros.add(num);
+            num.setHorizontalAlignment(SwingConstants.CENTER);
+            num.setVerticalAlignment(SwingConstants.CENTER);
+            num.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            numeros.add(num,BorderLayout.CENTER);
         }else{
-            numeros.add(new JLabel(""+vet[8]));
+            JLabel num = new JLabel(""+vet[8]);
+            num.setHorizontalAlignment(SwingConstants.CENTER);
+            num.setVerticalAlignment(SwingConstants.CENTER);
+            num.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            numeros.add(num,BorderLayout.CENTER);
         }
         if(vet[12]<0){
             JLabel num = new JLabel(""+vet[12]*(-1));
             num.setForeground(Color.red);
-            numeros.add(num);
+            num.setHorizontalAlignment(SwingConstants.CENTER);
+            num.setVerticalAlignment(SwingConstants.CENTER);
+            num.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            numeros.add(num,BorderLayout.CENTER);
         }else{
-            numeros.add(new JLabel(""+vet[12]));
+            JLabel num = new JLabel(""+vet[12]);
+            num.setHorizontalAlignment(SwingConstants.CENTER);
+            num.setVerticalAlignment(SwingConstants.CENTER);
+            num.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            numeros.add(num,BorderLayout.CENTER);
         }
         if(vet[17]<0){
             JLabel num = new JLabel(""+vet[17]*(-1));
             num.setForeground(Color.red);
-            numeros.add(num);
+            num.setHorizontalAlignment(SwingConstants.CENTER);
+            num.setVerticalAlignment(SwingConstants.CENTER);
+            num.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            numeros.add(num,BorderLayout.CENTER);
         }else{
-            numeros.add(new JLabel(""+vet[17]));
+            JLabel num = new JLabel(""+vet[17]);
+            num.setHorizontalAlignment(SwingConstants.CENTER);
+            num.setVerticalAlignment(SwingConstants.CENTER);
+            num.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            numeros.add(num,BorderLayout.CENTER);
         }
         if(vet[22]<0){
             JLabel num = new JLabel(""+vet[22]*(-1));
             num.setForeground(Color.red);
-            numeros.add(num);
+            num.setHorizontalAlignment(SwingConstants.CENTER);
+            num.setVerticalAlignment(SwingConstants.CENTER);
+            num.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            numeros.add(num,BorderLayout.CENTER);
         }else{
-            numeros.add(new JLabel(""+vet[22]));
+            JLabel num = new JLabel(""+vet[22]);
+            num.setHorizontalAlignment(SwingConstants.CENTER);
+            num.setVerticalAlignment(SwingConstants.CENTER);
+            num.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            numeros.add(num,BorderLayout.CENTER);
         }
         if(vet[4]<0){
             JLabel num = new JLabel(""+vet[4]*(-1));
             num.setForeground(Color.red);
-            numeros.add(num);
+            num.setHorizontalAlignment(SwingConstants.CENTER);
+            num.setVerticalAlignment(SwingConstants.CENTER);
+            num.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            numeros.add(num,BorderLayout.CENTER);
         }else{
-            numeros.add(new JLabel(""+vet[4]));
+            JLabel num = new JLabel(""+vet[4]);
+            num.setHorizontalAlignment(SwingConstants.CENTER);
+            num.setVerticalAlignment(SwingConstants.CENTER);
+            num.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            numeros.add(num,BorderLayout.CENTER);
         }
         if(vet[9]<0){
             JLabel num = new JLabel(""+vet[9]*(-1));
             num.setForeground(Color.red);
-            numeros.add(num);
+            num.setHorizontalAlignment(SwingConstants.CENTER);
+            num.setVerticalAlignment(SwingConstants.CENTER);
+            num.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            numeros.add(num,BorderLayout.CENTER);
         }else{
-            numeros.add(new JLabel(""+vet[9]));
+            JLabel num = new JLabel(""+vet[9]);
+            num.setHorizontalAlignment(SwingConstants.CENTER);
+            num.setVerticalAlignment(SwingConstants.CENTER);
+            num.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            numeros.add(num,BorderLayout.CENTER);
         }
         if(vet[13]<0){
             JLabel num = new JLabel(""+vet[13]*(-1));
             num.setForeground(Color.red);
-            numeros.add(num);
+            num.setHorizontalAlignment(SwingConstants.CENTER);
+            num.setVerticalAlignment(SwingConstants.CENTER);
+            num.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            numeros.add(num,BorderLayout.CENTER);
         }else{
-            numeros.add(new JLabel(""+vet[13]));
+            JLabel num = new JLabel(""+vet[13]);
+            num.setHorizontalAlignment(SwingConstants.CENTER);
+            num.setVerticalAlignment(SwingConstants.CENTER);
+            num.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            numeros.add(num,BorderLayout.CENTER);
         }
         if(vet[18]<0){
             JLabel num = new JLabel(""+vet[18]*(-1));
             num.setForeground(Color.red);
-            numeros.add(num);
+            num.setHorizontalAlignment(SwingConstants.CENTER);
+            num.setVerticalAlignment(SwingConstants.CENTER);
+            num.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            numeros.add(num,BorderLayout.CENTER);
         }else{
-            numeros.add(new JLabel(""+vet[18]));
+            JLabel num = new JLabel(""+vet[18]);
+            num.setHorizontalAlignment(SwingConstants.CENTER);
+            num.setVerticalAlignment(SwingConstants.CENTER);
+            num.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            numeros.add(num,BorderLayout.CENTER);
         }
         if(vet[23]<0){
             JLabel num = new JLabel(""+vet[23]*(-1));
             num.setForeground(Color.red);
-            numeros.add(num);
+            num.setHorizontalAlignment(SwingConstants.CENTER);
+            num.setVerticalAlignment(SwingConstants.CENTER);
+            num.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            numeros.add(num,BorderLayout.CENTER);
         }else{
-            numeros.add(new JLabel(""+vet[23]));
+            JLabel num = new JLabel(""+vet[23]);
+            num.setHorizontalAlignment(SwingConstants.CENTER);
+            num.setVerticalAlignment(SwingConstants.CENTER);
+            num.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            numeros.add(num,BorderLayout.CENTER);
         }
-        //JLabel nome = new JLabel(sorteio.retornaNomeJogador(indice));
         
         titulo.setPreferredSize(new Dimension(200,10));
         numeros.setPreferredSize(new Dimension(200,200));
-        //nome.setPreferredSize(new Dimension(200,10));
+        numeros.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         titulo.setBackground(Color.white);
         numeros.setBackground(Color.white);
-        //nome.setBackground(Color.white);
         this.add(titulo);
         this.add(numeros);
-        //this.add(nome);
     }
 }
