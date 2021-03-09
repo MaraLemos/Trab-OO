@@ -151,17 +151,6 @@ public class Sorteio {
         }
     }
     
-    /**
-     * Imprime o jogador da lista e sua cartela que corresponde ao indice recebido
-     * 
-     * @author Mara de Lemos Gomes
-     */
-    public String imprimeJogador(int indice){
-        String aux = "";
-        aux += cartelas.get(indice).imprimeCartela();
-        aux += "<center>"+jogadores.get(indice).getUserName()+"<center>";
-        return aux;
-    }
     
     /**
      * Retorna a quatidade de jogadores na lista
@@ -294,17 +283,12 @@ public class Sorteio {
             //Leitura de arquivo garante que arquivo existe
         }
     }
-    public static void main(String[] args){
-        
-        Sorteio sorteio = new Sorteio("linha");
-        
-        try{
-            sorteio.leArquivo();
-        }catch(IOException ex){
-            JOptionPane.showConfirmDialog(null, "Banco de dados não encontrado! A aplicação será encerrada.", "ERRO!",JOptionPane.DEFAULT_OPTION);
-            System.exit(0);
-        }
-        
-        TelaSorteio teste = new TelaSorteio(sorteio);
-    } 
+    
+    public int[] retornaCartela(int i){
+        return cartelas.get(i).getNumeros();
+    }
+    
+    public String retornaNomeJogador(int i){
+        return jogadores.get(i).getUserName();
+    }
 }

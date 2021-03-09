@@ -10,6 +10,7 @@ import java.awt.BorderLayout;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import javax.swing.*;
 
 /**
@@ -30,6 +31,8 @@ public class TelaInicial extends JFrame implements ActionListener, InterfaceTela
         this.jogadores = new JButton("Jogadores");
         this.configuracao = new JButton("Configuração");
         this.iniciar = new JButton("Iniciar");
+        
+        this.setTitle("Tela Inicial");
     }
 
     @Override
@@ -37,8 +40,8 @@ public class TelaInicial extends JFrame implements ActionListener, InterfaceTela
 
         //configura painelbingo
         this.painelBingo.setLayout(null);
-        this.painelBingo.setSize(960, 720);
-
+        this.painelBingo.setSize(960,720);
+        
         //configura bingo
         this.bingo.setIcon(new ImageIcon("imagens/TextoBingo.png"));
         this.bingo.setSize(499, 114);
@@ -101,6 +104,12 @@ public class TelaInicial extends JFrame implements ActionListener, InterfaceTela
     public void actionPerformed(ActionEvent a) {
         String tipo="";
         Sorteio sorteio1 = new Sorteio("");
+        try{
+            sorteio1.leArquivo();
+        }catch(IOException ex){
+            JOptionPane.showConfirmDialog(null, "Banco de dados não encontrado! A aplicação será encerrada.", "ERRO!",JOptionPane.DEFAULT_OPTION);
+            System.exit(0);
+        }
         if(a.getSource()==jogadores){
             System.out.println("Socorro");
 //            TelaJogadores addJogador = new TelaJogadores();
@@ -114,7 +123,6 @@ public class TelaInicial extends JFrame implements ActionListener, InterfaceTela
 
         }
         if(a.getSource()==configuracao){
-        //    System.out.println("Socorro");
             String opcoes[]= {"cheia", "linha"};
             Object showInputDialog = JOptionPane.showInputDialog(configuracao,opcoes,
                     "Escolha o tipo de Cartela",JOptionPane.INFORMATION_MESSAGE, 
@@ -122,7 +130,7 @@ public class TelaInicial extends JFrame implements ActionListener, InterfaceTela
             tipo = showInputDialog.toString();
         }
         if(a.getSource()==iniciar){
-            System.out.println("Socorro");
+            this.setVisible(false);
             sorteio1.setTipoCartela(tipo);
             TelaSorteio telaSorteio = new TelaSorteio(sorteio1);
             telaSorteio.mostra();

@@ -39,7 +39,6 @@ public class TelaSorteio implements ActionListener, InterfaceTela  {
     private JLabel bolaVerde;
     private JLabel bolaVermelha;
     private boolean controlaMovimento;
-    private JScrollPane barraRolagem;
     private JLabel num1,num2,num3,num4,num5,num6,num7,num8,num9,num10,num11,num12,num13,num14,num15,
             num16,num17,num18,num19,num20,num21,num22,num23,num24,num25,num26,num27,num28,num29,num30,
             num31,num32,num33,num34,num35,num36,num37,num38,num39,num40,num41,num42,num43,num44,num45,
@@ -53,7 +52,6 @@ public class TelaSorteio implements ActionListener, InterfaceTela  {
         sorteio = sorteio1;
         pag = new JFrame();
         principal = new JDesktopPane();
-        //cartelas = new JInternalFrame();
         botaoGirar = new JButton("Gire a roleta");
         botaoParar = new JButton("Parar");
         bolaAmarela = new JLabel();
@@ -179,6 +177,8 @@ public class TelaSorteio implements ActionListener, InterfaceTela  {
        principal.add(num71);principal.add(num72);principal.add(num73);principal.add(num74);principal.add(num75);
        
        cartelas = new TelaInternaSorteio(sorteio);
+       cartelas.setSize(940,350);
+       cartelas.setLocation(0, 350);
        principal.add(cartelas);
        pag.add(principal);
     }
@@ -349,6 +349,8 @@ public class TelaSorteio implements ActionListener, InterfaceTela  {
         if(sorteio.verificaCartelas(x)){
             cartelas.dispose();
             cartelas = new TelaInternaSorteio(sorteio);
+            cartelas.setSize(940,350);
+            cartelas.setLocation(0, 350);
             principal.add(cartelas);
             JOptionPane.showConfirmDialog(null, " Parabéns " + sorteio.getVencedor() + "! Você ganhou!", " VITÓRIA !",JOptionPane.DEFAULT_OPTION);
             System.exit(0);
@@ -394,9 +396,10 @@ public class TelaSorteio implements ActionListener, InterfaceTela  {
             botaoParar.setVisible(false);
             retornaPosicaoInicial();
             sorteia();
-            
             cartelas.dispose();
             cartelas = new TelaInternaSorteio(sorteio);
+            cartelas.setSize(940,350);
+            cartelas.setLocation(0, 350);
             principal.add(cartelas);
         }
     }
