@@ -18,13 +18,10 @@
  
 package bingo;
 
-import inteface.*;
 import java.util.*;
 import javax.swing.JOptionPane;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -42,31 +39,27 @@ public class Sorteio {
     private String vencedor;
     private String tipoCartela;
 
-    public void setTipoCartela(String tipoCartela) {
-        this.tipoCartela = tipoCartela;
-    }
     private int qtdJogadores;
     private int qtdNumSorteados;
     
 	/**
 	 * Construtor da classe Sorteio
-         * @param tipo Recebe se o jogo será iniciado como cartela cheia ou cartela linha/coluna
 	 *
 	 * @author Mara de Lemos Gomes
 	 */
-    public Sorteio(String tipo) {
+    public Sorteio(){
         this.jogadores = new ArrayList<>();
         this.cartelas = new ArrayList<>();
 	this.numSorteados = new int[75];
 	this.vencedor = "";
-        this.tipoCartela = tipo;
+        this.tipoCartela = "cheia";
         this.qtdJogadores = 0;
         this.qtdNumSorteados = 0;
     }
 
-//    public void setTipoCartela(String tipoCartela) {
-//        this.tipoCartela = tipoCartela;
-//    }
+    public void setTipoCartela(String tipo) {
+        this.tipoCartela = tipo;
+    }
     
     /**
      * Insere jogador no bingo

@@ -11,6 +11,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.*;
 
 /**
@@ -24,7 +26,8 @@ public class TelaInicial extends JFrame implements ActionListener, InterfaceTela
     private final JButton jogadores;
     private final JButton configuracao;
     private final JButton iniciar;
-
+    private Sorteio sorteio1;
+    
     public TelaInicial() {
         this.painelBingo = new JPanel();
         this.bingo = new JLabel();
@@ -53,10 +56,9 @@ public class TelaInicial extends JFrame implements ActionListener, InterfaceTela
         jogadores.setBackground(Color.black);
         jogadores.setSize(190, 178);
         jogadores.setLocation(95, 500);
-        jogadores.setVisible(true);
+        jogadores.setVisible(false);
 
         jogadores.addActionListener(this);
-
         
         //configura botao configuracao
         configuracao.setIcon(new ImageIcon("imagens/Configuracoes.png"));
@@ -75,10 +77,10 @@ public class TelaInicial extends JFrame implements ActionListener, InterfaceTela
         iniciar.setBackground(Color.black);
         iniciar.setSize(190, 178);
         iniciar.setLocation(680, 500);
-        iniciar.setVisible(true);
+        iniciar.setVisible(false);
 
         iniciar.addActionListener(this);
-
+        
         this.painelBingo.add(bingo);
         this.painelBingo.add(jogadores);
         this.painelBingo.add(configuracao);
@@ -102,16 +104,10 @@ public class TelaInicial extends JFrame implements ActionListener, InterfaceTela
 
     @Override
     public void actionPerformed(ActionEvent a) {
-        String tipo="";
-        Sorteio sorteio1 = new Sorteio("");
-        try{
-            sorteio1.leArquivo();
-        }catch(IOException ex){
-            JOptionPane.showConfirmDialog(null, "Banco de dados não encontrado! A aplicação será encerrada.", "ERRO!",JOptionPane.DEFAULT_OPTION);
-            System.exit(0);
-        }
+        String tipo = "";
+        
         if(a.getSource()==jogadores){
-            System.out.println("Socorro");
+            
 //            TelaJogadores addJogador = new TelaJogadores();
 //            addJogador.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 //            addJogador.setSize(960, 720);
@@ -128,14 +124,29 @@ public class TelaInicial extends JFrame implements ActionListener, InterfaceTela
                     "Escolha o tipo de Cartela",JOptionPane.INFORMATION_MESSAGE, 
                     new ImageIcon("imagens/Configuracoes.png"),opcoes, opcoes[0]);
             tipo = showInputDialog.toString();
-        }
-        if(a.getSource()==iniciar){
-            this.setVisible(false);
+            
+            sorteio1 = new Sorteio();
             sorteio1.setTipoCartela(tipo);
-            TelaSorteio telaSorteio = new TelaSorteio(sorteio1);
-            telaSorteio.mostra();
             
+            jogadores.setVisible(true);
+            iniciar.setVisible(true);
+            configuracao.setVisible(false);
             
+            try {
+                sorteio1.leArquivo();
+            } catch (IOException ex) {
+                JOptionPane.showConfirmDialog(null, "Banco de dados não encontrado! A aplicação será encerrada.", "ERRO!",JOptionPane.DEFAULT_OPTION);
+                System.exit(0);
+            }
+        }       
+        
+        if(a.getSource()==iniciar){
+            if(sorteio1.getQtdJogadores() < 2){
+                JOptionPane.showMessageDialog(null,"É necessário cadastrar jogadores");
+            }else{
+                this.setVisible(false);
+                TelaSorteio telaSorteio = new TelaSorteio(sorteio1);
+            }  
         }
     }
 
