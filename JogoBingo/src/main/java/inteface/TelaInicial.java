@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.*;
+import javax.swing.border.Border;
 
 /**
  *
@@ -54,6 +55,11 @@ public class TelaInicial extends JFrame implements ActionListener, InterfaceTela
         jogadores.setIcon(new ImageIcon("imagens/Jogadores.png"));
         jogadores.setBackground(Color.black);
         jogadores.setSize(190, 178);
+        
+        jogadores.setBorderPainted(false); 
+        jogadores.setContentAreaFilled(false); 
+        jogadores.setFocusPainted(false);
+        
         jogadores.setLocation(95, 500);
         jogadores.setVisible(false);
 
@@ -63,6 +69,11 @@ public class TelaInicial extends JFrame implements ActionListener, InterfaceTela
         configuracao.setIcon(new ImageIcon("imagens/Configuracoes.png"));
         configuracao.setBackground(Color.black);
         configuracao.setSize(190, 178);
+        
+        configuracao.setBorderPainted(false); 
+        configuracao.setContentAreaFilled(false); 
+        configuracao.setFocusPainted(false);
+        
         configuracao.setLocation(390, 500);
         configuracao.setVisible(true);
 
@@ -73,6 +84,11 @@ public class TelaInicial extends JFrame implements ActionListener, InterfaceTela
         iniciar.setIcon(new ImageIcon("imagens/iniciar.png"));
         iniciar.setBackground(Color.black);
         iniciar.setSize(190, 178);
+        
+        iniciar.setBorderPainted(false); 
+        iniciar.setContentAreaFilled(false); 
+        iniciar.setFocusPainted(false);
+        
         iniciar.setLocation(680, 500);
         iniciar.setVisible(false);
 
