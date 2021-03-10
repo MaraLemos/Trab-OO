@@ -37,6 +37,7 @@ public class Jogador {
 	 *
 	 * @author Ketleen Anne Faria
 	 */
+
     public Jogador(String userName) {
         this.userName = userName;
         this.id = geraId++;   

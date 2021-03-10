@@ -52,7 +52,6 @@ public class TelaInicial extends JFrame implements ActionListener, InterfaceTela
 
         //configura botao jogadores
         jogadores.setIcon(new ImageIcon("imagens/Jogadores.png"));
-        jogadores.setLayout(new BorderLayout(40,40));
         jogadores.setBackground(Color.black);
         jogadores.setSize(190, 178);
         jogadores.setLocation(95, 500);
@@ -62,7 +61,6 @@ public class TelaInicial extends JFrame implements ActionListener, InterfaceTela
         
         //configura botao configuracao
         configuracao.setIcon(new ImageIcon("imagens/Configuracoes.png"));
-        //configuracao.setLayout(null);
         configuracao.setBackground(Color.black);
         configuracao.setSize(190, 178);
         configuracao.setLocation(390, 500);
@@ -73,7 +71,6 @@ public class TelaInicial extends JFrame implements ActionListener, InterfaceTela
         
         //configura botao iniciar
         iniciar.setIcon(new ImageIcon("imagens/iniciar.png"));
-        iniciar.setLayout(new BoxLayout(this.iniciar, BoxLayout.Y_AXIS));
         iniciar.setBackground(Color.black);
         iniciar.setSize(190, 178);
         iniciar.setLocation(680, 500);
@@ -108,14 +105,7 @@ public class TelaInicial extends JFrame implements ActionListener, InterfaceTela
         
         if(a.getSource()==jogadores){
             
-//            TelaJogadores addJogador = new TelaJogadores();
-//            addJogador.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//            addJogador.setSize(960, 720);
-//            addJogador.setLayout(null);
-//            addJogador.setBackground(Color.white);
-//
-//            addJogador.mostra();
-//            addJogador.setVisible(true);
+//           TelaJogadores addJogador = new TelaJogadores();
 
         }
         if(a.getSource()==configuracao){
