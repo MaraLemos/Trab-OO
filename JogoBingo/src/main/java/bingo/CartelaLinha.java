@@ -43,7 +43,7 @@ public class CartelaLinha extends Cartela{
     * @author Mara de Lemos Gomes
     */
     @Override
-    protected boolean verificaVitoria() {
+    public boolean verificaVitoria() {
         
         //Verifica se a coluna "B" foi marcada
         if(numeros[0] < 0 && numeros[1] < 0 && numeros[2] < 0 && numeros[3] < 0 && numeros[4] < 0)

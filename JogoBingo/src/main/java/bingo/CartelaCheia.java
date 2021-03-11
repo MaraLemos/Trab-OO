@@ -43,7 +43,7 @@ public class CartelaCheia extends Cartela{
     * @author Mara de Lemos Gomes
     */
     @Override
-    protected boolean verificaVitoria() {
+    public boolean verificaVitoria() {
         return numMarcados == 24;
     }
 }
