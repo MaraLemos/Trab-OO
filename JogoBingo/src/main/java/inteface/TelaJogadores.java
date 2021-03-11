@@ -18,9 +18,11 @@ package inteface;
 
 import bingo.Jogador;
 import bingo.Sorteio;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -70,6 +72,23 @@ public class TelaJogadores extends JFrame implements ActionListener, InterfaceTe
         this.painelJogadores.setSize(960, 720);
         this.painelJogadores.setLayout(null);
         this.painelJogadores.add(imagemJogadores);
+        
+        addJogador.setIcon(new ImageIcon("imagens/botaoadd.png"));
+        addJogador.setBackground(Color.white);
+        addJogador.setSize(37, 34);
+        addJogador.setLocation(850, 95);
+        addJogador.setVisible(true);
+        
+        voltar.setIcon(new ImageIcon("imagens/botaovoltar.png"));
+        voltar.setBackground(Color.white);
+        voltar.setSize(41, 36);
+        voltar.setLocation(50, 95);
+        voltar.setVisible(true);
+        
+        this.painelJogadores.add(addJogador);
+        this.painelJogadores.add(voltar);
+        
+        
         
         //verifica qtd de jogadores
         if (sorteio.getQtdJogadores() == 0) {
