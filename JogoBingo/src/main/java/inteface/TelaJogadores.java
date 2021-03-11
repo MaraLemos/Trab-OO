@@ -1,4 +1,4 @@
-/************************************************************
+/** **********************************************************
  * Universidade Federal de Juiz de Fora - UFJF              *
  * Instituto de Ciências Exatas                             *
  * Departamento de Ciência da Computação                    *
@@ -10,67 +10,66 @@
  *           Thiago Goulart da Fonseca - MAT 201865119AB    *
  * Versão: 1.0.0                                            *
  *                    TRABALHO PRÁTICO                      *
- ************************************************************/
-
-/***********************************************************
+ *********************************************************** */
+/** *********************************************************
  *         Implementação da tela de jogadores              *
- ***********************************************************/
-
+ ********************************************************** */
 package inteface;
 
 import bingo.Jogador;
 import bingo.Sorteio;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JTable;
+import javax.swing.*;
 
 /**
  *
  * @author ketleen
- * @param ae
+ * @param
  */
 public class TelaJogadores extends JFrame implements ActionListener, InterfaceTela {
 
-    private JTable tableJogadores;
-    private JPanel painelJogadores;
-    private JPanel painelAddJogadores;
-    private Jogador cadastro;
-    private Sorteio jogador;
+    private JLabel imagemJogadores;
+   // private final JPanel painelJogadores;
+   // private JPanel painelAddJogadores;//colocar um JoptionPane
+    private Jogador jogador;
+    private Sorteio sorteio;
 
     public TelaJogadores() {
-        this.tableJogadores = new JTable();
-        this.painelJogadores = new JPanel();
-        this.painelAddJogadores = new JPanel();
-        jogador = new Sorteio();
+
+     //   this.painelJogadores = new JPanel();
+        this.imagemJogadores = new JLabel();
+        //  this.painelAddJogadores = new JPanel();
+        sorteio = new Sorteio();
         
+        //nao entendi oq é aqui mas fé
         this.setTitle("Jogadores");
+        this.setSize(960, 720);
+        this.setLayout(null);
+        this.setVisible(true);
         mostra();
     }
 
- 
     @Override
     public void mostra() {
-        
-        //configura painel
-        painelJogadores.setSize(960, 720);
-        painelJogadores.setLayout(null);
-      
-      
-        if(jogador.getQtdJogadores()==0){
-            
+
+
+        //configura imagemJogadores
+        this.imagemJogadores.setIcon(new ImageIcon("imagens/TextoJogadores.png"));
+        this.imagemJogadores.setSize(392, 82);
+        this.imagemJogadores.setLocation(252, 100);
+  
+
+        //verifica qtd de jogadores
+        if (sorteio.getQtdJogadores() == 0) {
+
         }
-        
-        painelJogadores.setVisible(true);
-       
-        mostra();
-    }   
-    
+        this.add(this.imagemJogadores);
+    }
+
     @Override
     public void actionPerformed(ActionEvent ae) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
 
 }

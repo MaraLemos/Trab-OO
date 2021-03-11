@@ -131,7 +131,8 @@ public class TelaInicial extends JFrame implements ActionListener, InterfaceTela
         
         if(a.getSource()==jogadores){
             
-//           TelaJogadores addJogador = new TelaJogadores(sorteio);
+          TelaJogadores addJogador = new TelaJogadores();
+          addJogador.setVisible(true);
 
         }
         if(a.getSource()==configuracao){
