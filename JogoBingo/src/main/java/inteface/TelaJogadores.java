@@ -30,17 +30,23 @@ import javax.swing.*;
 public class TelaJogadores extends JFrame implements ActionListener, InterfaceTela {
 
     private JLabel imagemJogadores;
-   // private final JPanel painelJogadores;
-   // private JPanel painelAddJogadores;//colocar um JoptionPane
+    private final JPanel painelJogadores;
+    private JButton addJogador;
+    private JButton voltar;
+    
+   // private JPanel painelAddJogadores; //colocar um JoptionPane
     private Jogador jogador;
     private Sorteio sorteio;
 
     public TelaJogadores() {
 
-     //   this.painelJogadores = new JPanel();
+        this.painelJogadores = new JPanel();
         this.imagemJogadores = new JLabel();
-        //  this.painelAddJogadores = new JPanel();
+        this.addJogador = new JButton();
+        this.voltar = new JButton();
+        //  this.painelAddJogadores = new JPanel(); //colocar um JoptionPane
         sorteio = new Sorteio();
+        
         
         //nao entendi oq é aqui mas fé
         this.setTitle("Jogadores");
@@ -58,13 +64,18 @@ public class TelaJogadores extends JFrame implements ActionListener, InterfaceTe
         this.imagemJogadores.setIcon(new ImageIcon("imagens/TextoJogadores.png"));
         this.imagemJogadores.setSize(392, 82);
         this.imagemJogadores.setLocation(252, 100);
-  
-
+        
+        
+        //configura PainelJogadores
+        this.painelJogadores.setSize(960, 720);
+        this.painelJogadores.setLayout(null);
+        this.painelJogadores.add(imagemJogadores);
+        
         //verifica qtd de jogadores
         if (sorteio.getQtdJogadores() == 0) {
 
         }
-        this.add(this.imagemJogadores);
+        this.add(this.painelJogadores);
     }
 
     @Override
