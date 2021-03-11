@@ -70,40 +70,45 @@ public class Sorteio {
      */
     
     public void insereJogador(String nome, String pai){
-        nome = nome.toUpperCase().trim();
         
-        String nome1;
-        int i;
+        if(jogadores.size() < 4){
+            nome = nome.toUpperCase().trim();
         
-        for(i = 0; i < jogadores.size(); i++){
-            nome1 = jogadores.get(i).getUserName();
-            nome1 = nome1.toUpperCase().trim();
-            if(nome1.compareTo(nome) == 0){
-                JOptionPane.showMessageDialog(null, "Esse nome já está sendo usado, tente outro.", "ERRO!", JOptionPane.ERROR_MESSAGE, null);
-                break;
-            }
-        }
-        
-        if(i == jogadores.size()){
-            Jogador aux = new Jogador(nome);
-            jogadores.add(aux);
-        
-            if(tipoCartela.compareTo("cheia") == 0){
-                cartelas.add(new CartelaCheia(aux.getCartelaAssoc()));
-            }
-            else{
-                cartelas.add(new CartelaLinha(aux.getCartelaAssoc()));
-            }
+            String nome1;
+            int i;
 
-            this.qtdJogadores++;
-            
-            if(pai.compareTo("arquivo") != 0){
-                try{
-                    abrirArquivoParaEscrita(nome);
-                }catch(IOException ex){
-                    //Não vai gerar a exceção pois a leitura do arquivo garante a existência dele
+            for(i = 0; i < jogadores.size(); i++){
+                nome1 = jogadores.get(i).getUserName();
+                nome1 = nome1.toUpperCase().trim();
+                if(nome1.compareTo(nome) == 0){
+                    JOptionPane.showMessageDialog(null, "Esse nome já está sendo usado, tente outro.", "ERRO!", JOptionPane.ERROR_MESSAGE, null);
+                    break;
                 }
             }
+
+            if(i == jogadores.size()){
+                Jogador aux = new Jogador(nome);
+                jogadores.add(aux);
+
+                if(tipoCartela.compareTo("cheia") == 0){
+                    cartelas.add(new CartelaCheia(aux.getCartelaAssoc()));
+                }
+                else{
+                    cartelas.add(new CartelaLinha(aux.getCartelaAssoc()));
+                }
+
+                this.qtdJogadores++;
+
+                if(pai.compareTo("arquivo") != 0){
+                    try{
+                        abrirArquivoParaEscrita(nome);
+                    }catch(IOException ex){
+                        //Não vai gerar a exceção pois a leitura do arquivo garante a existência dele
+                    }
+                }
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "A quantidade máxima de jogadores foi atingida");
         }
     }
     
