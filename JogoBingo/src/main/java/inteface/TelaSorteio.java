@@ -44,8 +44,8 @@ public class TelaSorteio implements ActionListener, InterfaceTela  {
             num31,num32,num33,num34,num35,num36,num37,num38,num39,num40,num41,num42,num43,num44,num45,
             num46,num47,num48,num49,num50,num51,num52,num53,num54,num55,num56,num57,num58,num59,num60,
             num61,num62,num63,num64,num65,num66,num67,num68,num69,num70,num71,num72,num73,num74,num75;
-    Sorteio sorteio;
-    JInternalFrame cartelas;
+    private Sorteio sorteio;
+    private JInternalFrame cartelas;
     
     public TelaSorteio(Sorteio sorteio1){
         
@@ -83,6 +83,7 @@ public class TelaSorteio implements ActionListener, InterfaceTela  {
         pag.setVisible(true); //Visibilidade do frame
         mostra();
     }
+    
     @Override
     public void mostra(){
         principal.setLayout(null);

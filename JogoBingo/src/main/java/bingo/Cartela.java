@@ -38,7 +38,7 @@ public abstract class Cartela {
     * 
     * @author Mara de Lemos Gomes
     */
-    protected abstract boolean verificaVitoria();
+    public abstract boolean verificaVitoria();
     
     /**
     * Retorna Id da cartela
@@ -181,6 +181,12 @@ public abstract class Cartela {
             
     }
     
+    /**
+    * Retorna o vetor de numeros da cartela
+    * @return numeros
+    *
+    * @author Mara de Lemos Gomes 
+    */
     public int[] getNumeros(){
         return numeros;
     } 

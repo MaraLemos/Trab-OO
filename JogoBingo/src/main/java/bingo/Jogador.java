@@ -28,12 +28,11 @@ public class Jogador {
     private String userName ;
     private static int geraId = 1;
     private final int id;
-    private int cartelaAssoc;
+    private final int cartelaAssoc;
 	
 	/**
 	 * Construtor da classe Jogador
 	 * @param userName
-	 * @param id
 	 *
 	 * @author Ketleen Anne Faria
 	 */

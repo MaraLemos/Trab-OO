@@ -33,20 +33,20 @@ import java.io.IOException;
 
 public class Sorteio {
     
-    private  List<Jogador> jogadores;
-    private List<Cartela> cartelas;
-    private int[] numSorteados;
+    private final  List<Jogador> jogadores;
+    private final List<Cartela> cartelas;
+    private final int[] numSorteados;
     private String vencedor;
     private String tipoCartela;
 
     private int qtdJogadores;
     private int qtdNumSorteados;
     
-	/**
-	 * Construtor da classe Sorteio
-	 *
-	 * @author Mara de Lemos Gomes
-	 */
+    /**
+     * Construtor da classe Sorteio
+     *
+     * @author Mara de Lemos Gomes
+     */
     public Sorteio(){
         this.jogadores = new ArrayList<>();
         this.cartelas = new ArrayList<>();
@@ -56,7 +56,13 @@ public class Sorteio {
         this.qtdJogadores = 0;
         this.qtdNumSorteados = 0;
     }
-
+    
+    /**
+     * Modifica o tipo de jogo do Bingo
+     * @param tipo
+     * 
+     * @author Ketleen Anne Faria
+     */
     public void setTipoCartela(String tipo) {
         this.tipoCartela = tipo;
     }
@@ -67,46 +73,56 @@ public class Sorteio {
      * @param pai //Recebe quem está chamando a função
      * 
      * @author Ary de Paula Canuto Neto
-     */
-    
+     */ 
     public void insereJogador(String nome, String pai){
-        nome = nome.toUpperCase().trim();
         
-        String nome1;
-        int i;
+        if(jogadores.size() < 4){
+            nome = nome.toUpperCase().trim();
         
-        for(i = 0; i < jogadores.size(); i++){
-            nome1 = jogadores.get(i).getUserName();
-            nome1 = nome1.toUpperCase().trim();
-            if(nome1.compareTo(nome) == 0){
-                JOptionPane.showMessageDialog(null, "Esse nome já está sendo usado, tente outro.", "ERRO!", JOptionPane.ERROR_MESSAGE, null);
-                break;
-            }
-        }
-        
-        if(i == jogadores.size()){
-            Jogador aux = new Jogador(nome);
-            jogadores.add(aux);
-        
-            if(tipoCartela.compareTo("cheia") == 0){
-                cartelas.add(new CartelaCheia(aux.getCartelaAssoc()));
-            }
-            else{
-                cartelas.add(new CartelaLinha(aux.getCartelaAssoc()));
-            }
+            String nome1;
+            int i;
 
-            this.qtdJogadores++;
-            
-            if(pai.compareTo("arquivo") != 0){
-                try{
-                    abrirArquivoParaEscrita(nome);
-                }catch(IOException ex){
-                    //Não vai gerar a exceção pois a leitura do arquivo garante a existência dele
+            for(i = 0; i < jogadores.size(); i++){
+                nome1 = jogadores.get(i).getUserName();
+                nome1 = nome1.toUpperCase().trim();
+                if(nome1.compareTo(nome) == 0){
+                    JOptionPane.showMessageDialog(null, "Esse nome já está sendo usado, tente outro.", "ERRO!", JOptionPane.ERROR_MESSAGE, null);
+                    break;
                 }
             }
+
+            if(i == jogadores.size()){
+                Jogador aux = new Jogador(nome);
+                jogadores.add(aux);
+
+                if(tipoCartela.compareTo("cheia") == 0){
+                    cartelas.add(new CartelaCheia(aux.getCartelaAssoc()));
+                }
+                else{
+                    cartelas.add(new CartelaLinha(aux.getCartelaAssoc()));
+                }
+
+                this.qtdJogadores++;
+
+                if(pai.compareTo("arquivo") != 0){
+                    try{
+                        abrirArquivoParaEscrita(nome);
+                    }catch(IOException ex){
+                        //Não vai gerar a exceção pois a leitura do arquivo garante a existência dele
+                    }
+                }
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "A quantidade máxima de jogadores foi atingida");
         }
     }
     
+    /**
+     * Remove jogador do bingo
+     * @param id
+     * 
+     * @author Thiago Goulart da Fonseca
+     */ 
     public void RemoveJogador(int id) {
 
         if (id >= 0 && id < this.jogadores.size()) {
@@ -159,6 +175,7 @@ public class Sorteio {
      * sorteia os numeros para o bingo
      * 
      * @author Ary de Paula Canuto Neto
+     * @return int //Retorna o numero sorteado
      */
     public int roleta(){
         int i;
@@ -183,6 +200,7 @@ public class Sorteio {
      * Verifica se o número sorteado está em alguma cartela
      * 
      * @author Mara de Lemos Gomes
+     * @return boolean //Retorn true caso haja um vendedor e false caso contrário
      */
     public boolean verificaCartelas(int numero){
         if(numero == 0)
@@ -260,27 +278,41 @@ public class Sorteio {
      */
     public void atualizaBD(){
         try{
-        FileWriter arquivo = new FileWriter("bancoDeDados/jogadores.txt",false);
-        BufferedWriter bwArquivo = new BufferedWriter(arquivo);
-        String nome = "";
-        for(int i = 0; i < jogadores.size(); i++){
-            nome = jogadores.get(i).getUserName();
-            bwArquivo.write(nome);
-            bwArquivo.newLine();
-        }
-        
-        bwArquivo.close();
-        arquivo.close();
+            FileWriter arquivo = new FileWriter("bancoDeDados/jogadores.txt",false);
+            BufferedWriter bwArquivo = new BufferedWriter(arquivo);
+            String nome = "";
+            for(int i = 0; i < jogadores.size(); i++){
+                nome = jogadores.get(i).getUserName();
+                bwArquivo.write(nome);
+                bwArquivo.newLine();
+            }
+
+            bwArquivo.close();
+            arquivo.close();
         
         }catch(IOException ex){
             //Leitura de arquivo garante que arquivo existe
         }
     }
     
+    /**
+     * Retorna a cartela do id recebido
+     *
+     * @author Mara de Lemos Gomes
+     * @param i
+     * @return vetor de números
+     */
     public int[] retornaCartela(int i){
         return cartelas.get(i).getNumeros();
     }
     
+    /**
+     * Retorna nome do jogador do id recebido
+     *
+     * @author Mara de Lemos Gomes
+     * @param i
+     * @return nome
+     */
     public String retornaNomeJogador(int i){
         return jogadores.get(i).getUserName();
     }
