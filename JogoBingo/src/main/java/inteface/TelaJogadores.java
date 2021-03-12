@@ -35,13 +35,15 @@ public class TelaJogadores extends JFrame implements ActionListener, InterfaceTe
     private final JPanel painelJogadores;
     private JButton addJogador;
     private JButton voltar;
-    
+    private String path;
+	
    // private JPanel painelAddJogadores; //colocar um JoptionPane
     private Jogador jogador;
     private Sorteio sorteio;
 
     public TelaJogadores(Sorteio sorteio,String path) {
-
+		
+		this.path = path;
         this.painelJogadores = new JPanel();
         this.imagemJogadores = new JLabel();
         this.addJogador = new JButton();
@@ -64,7 +66,7 @@ public class TelaJogadores extends JFrame implements ActionListener, InterfaceTe
 
 
         //configura imagemJogadores
-        this.imagemJogadores.setIcon(new ImageIcon("imagens/TextoJogadores.png"));
+        this.imagemJogadores.setIcon(new ImageIcon(path+"/TextoJogadores.png"));
         this.imagemJogadores.setSize(392, 82);
         this.imagemJogadores.setLocation(252, 100);
         
@@ -74,13 +76,13 @@ public class TelaJogadores extends JFrame implements ActionListener, InterfaceTe
         this.painelJogadores.setLayout(null);
         this.painelJogadores.add(imagemJogadores);
         
-        addJogador.setIcon(new ImageIcon("imagens/botaoadd.png"));
+        addJogador.setIcon(new ImageIcon(path+"/botaoadd.png"));
         addJogador.setBackground(Color.white);
         addJogador.setSize(37, 34);
         addJogador.setLocation(850, 95);
         addJogador.setVisible(true);
         
-        voltar.setIcon(new ImageIcon("imagens/botaovoltar.png"));
+        voltar.setIcon(new ImageIcon(path+"/botaovoltar.png"));
         voltar.setBackground(Color.white);
         voltar.setSize(41, 36);
         voltar.setLocation(50, 95);

@@ -236,7 +236,7 @@ public class Sorteio {
      * @author Mara de Lemos Gomes
      */
     public void leArquivo() throws IOException{
-        BufferedReader arquivo = new BufferedReader(new FileReader(path+"/jogadores.txt"));
+        BufferedReader arquivo = new BufferedReader(new FileReader(path+"/bancoDeDados/jogadores.txt"));
         String linha = "";
         
         //Enquanto houver mais linhas
@@ -261,7 +261,7 @@ public class Sorteio {
         FileWriter fwArquivo;
         BufferedWriter bwArquivo;
        //Função leitura garante que arquivo existe, abrindo arquivo, passando true para acrescentar dados e não substituir
-        fwArquivo = new FileWriter(path+"/jogadores.txt",true);
+        fwArquivo = new FileWriter(path+"/bancoDeDados/jogadores.txt",true);
         bwArquivo = new BufferedWriter(fwArquivo);
 
         bwArquivo.write(nome);
@@ -279,7 +279,7 @@ public class Sorteio {
      */
     public void atualizaBD(){
         try{
-            FileWriter arquivo = new FileWriter(path+"/jogadores.txt",false);
+            FileWriter arquivo = new FileWriter(path+"/bancoDeDados/jogadores.txt",false);
             BufferedWriter bwArquivo = new BufferedWriter(arquivo);
             String nome = "";
             for(int i = 0; i < jogadores.size(); i++){

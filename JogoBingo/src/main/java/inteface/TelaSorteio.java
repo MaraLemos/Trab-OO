@@ -138,7 +138,7 @@ public class TelaSorteio implements ActionListener, InterfaceTela  {
        botaoGirar.addActionListener(this);
        
        //Botão parar
-       botaoParar.setIcon(new ImageIcon("imagens/BotaoPararRoleta.png"));
+       botaoParar.setIcon(new ImageIcon(path+"/BotaoPararRoleta.png"));
        botaoParar.setBackground(Color.black);
        botaoParar.setSize(220, 35);
        botaoParar.setLocation(50,275);

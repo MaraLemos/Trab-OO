@@ -125,6 +125,7 @@ public class TelaInicial extends JFrame implements ActionListener, InterfaceTela
         }else{
             System.out.println("");
         }
+		
         TelaInicial telainicial = new TelaInicial();
         telainicial.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         telainicial.setSize(960, 720);
