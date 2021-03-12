@@ -22,7 +22,6 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -36,14 +35,15 @@ public class TelaJogadores extends JFrame implements ActionListener, InterfaceTe
     private JButton addJogador;
     private JButton voltar;
     private String path;
-   
+    private TelaInicial telainicial;
 	
    // private JPanel painelAddJogadores; //colocar um JoptionPane
     private Jogador jogador;
     private Sorteio sorteio;
 
-    public TelaJogadores(Sorteio sorteio,String path) {
-    
+    public TelaJogadores(Sorteio sorteio,String path, TelaInicial telainicial) {
+        
+        this.telainicial = telainicial;
 	this.path = path;
         this.painelJogadores = new JPanel();
         this.imagemJogadores = new JLabel();
@@ -52,7 +52,7 @@ public class TelaJogadores extends JFrame implements ActionListener, InterfaceTe
         //  this.painelAddJogadores = new JPanel(); //colocar um JoptionPane
         this.sorteio = sorteio;
         
-        //nao entendi oq é aqui mas fé
+        //Configura a JFrame
         this.setTitle("Jogadores");
         this.setSize(960, 720);
         this.setLayout(null);
@@ -76,6 +76,7 @@ public class TelaJogadores extends JFrame implements ActionListener, InterfaceTe
         this.painelJogadores.setSize(960, 720);
         this.painelJogadores.setLayout(null);
         this.painelJogadores.add(imagemJogadores);
+        this.painelJogadores.setBackground(Color.white);
         
         addJogador.setIcon(new ImageIcon(path+"/BotaoMais.png"));
         addJogador.setBackground(Color.white);
@@ -85,6 +86,7 @@ public class TelaJogadores extends JFrame implements ActionListener, InterfaceTe
         addJogador.setBorderPainted(false); 
         addJogador.setContentAreaFilled(false); 
         addJogador.setFocusPainted(false);
+        addJogador.addActionListener(this);
         
         voltar.setIcon(new ImageIcon(path+"/BotaoVoltar.png"));
         voltar.setBackground(Color.white);
@@ -94,6 +96,7 @@ public class TelaJogadores extends JFrame implements ActionListener, InterfaceTe
         voltar.setBorderPainted(false); 
         voltar.setContentAreaFilled(false); 
         voltar.setFocusPainted(false);
+        voltar.addActionListener(this);
         
         this.painelJogadores.add(addJogador);
         this.painelJogadores.add(voltar);
@@ -109,12 +112,9 @@ public class TelaJogadores extends JFrame implements ActionListener, InterfaceTe
 
     @Override
     public void actionPerformed(ActionEvent a) {
-        if(a.getSource() ==voltar ){
-//            TelaInicial telaInicial = new TelaInicial();
-//           telaInicial.show();
-//          
-//          telaInicial.setVisible(true); 
-//           //this.dispose();
+        if(a.getSource() == voltar ){
+            telainicial.setVisible(true);
+            this.dispose();
         }
     }
 

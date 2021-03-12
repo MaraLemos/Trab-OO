@@ -37,7 +37,8 @@ public class TelaInicial extends JFrame implements ActionListener, InterfaceTela
     private final JButton iniciar;
     private Sorteio sorteio1;
     private static String path;
-
+    private static TelaInicial telainicial;
+    
     public TelaInicial() {
         this.painelBingo = new JPanel();
         this.bingo = new JLabel();
@@ -132,7 +133,7 @@ public class TelaInicial extends JFrame implements ActionListener, InterfaceTela
             System.out.println("");
         }
 
-        TelaInicial telainicial = new TelaInicial();
+        telainicial = new TelaInicial();
     }
 
     @Override
@@ -141,8 +142,9 @@ public class TelaInicial extends JFrame implements ActionListener, InterfaceTela
 
         //açao botao jogadores
         if (a.getSource() == jogadores) {
-
-            TelaJogadores addJogador = new TelaJogadores(sorteio1, path);
+            
+            telainicial.setVisible(false);
+            TelaJogadores addJogador = new TelaJogadores(sorteio1, path,telainicial);
     
 
         }
