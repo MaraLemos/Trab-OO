@@ -18,6 +18,7 @@ package inteface;
 
 import bingo.Jogador;
 import bingo.Sorteio;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
@@ -38,21 +39,22 @@ public class TelaJogadores extends JFrame implements ActionListener, InterfaceTe
     private Jogador jogador;
     private Sorteio sorteio;
 
-    public TelaJogadores() {
+    public TelaJogadores(Sorteio sorteio,String path) {
 
         this.painelJogadores = new JPanel();
         this.imagemJogadores = new JLabel();
         this.addJogador = new JButton();
         this.voltar = new JButton();
         //  this.painelAddJogadores = new JPanel(); //colocar um JoptionPane
-        sorteio = new Sorteio();
-        
+        this.sorteio = sorteio;
         
         //nao entendi oq é aqui mas fé
         this.setTitle("Jogadores");
         this.setSize(960, 720);
         this.setLayout(null);
         this.setVisible(true);
+        this.setLocationRelativeTo(null);
+        this.setBackground(Color.white);
         mostra();
     }
 

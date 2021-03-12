@@ -30,8 +30,10 @@ public class Cartelinha extends JInternalFrame{
     
     Sorteio sorteio;
     int indice;
+    String path;
     
-    public Cartelinha(Sorteio sorteio1, int i){
+    public Cartelinha(Sorteio sorteio1, int i,String path){
+        this.path = path;
         sorteio = sorteio1;
         indice = i;
         this.setLayout(new FlowLayout());
@@ -240,7 +242,7 @@ public class Cartelinha extends JInternalFrame{
         }
         
         JLabel centro = new JLabel();
-        centro.setIcon(new ImageIcon("imagens/Cartela.png"));
+        centro.setIcon(new ImageIcon(path+"/Cartela.png"));
         centro.setHorizontalAlignment(SwingConstants.CENTER);
         centro.setVerticalAlignment(SwingConstants.CENTER);
         centro.setBorder(BorderFactory.createLineBorder(Color.BLACK));

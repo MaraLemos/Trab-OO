@@ -22,9 +22,9 @@ import bingo.Sorteio;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.io.IOException;
 import javax.swing.*;
-import javax.swing.border.Border;
 
 /**
  *
@@ -38,6 +38,7 @@ public class TelaInicial extends JFrame implements ActionListener, InterfaceTela
     private final JButton configuracao;
     private final JButton iniciar;
     private Sorteio sorteio1;
+    private static String path;
     
     public TelaInicial() {
         this.painelBingo = new JPanel();
@@ -57,12 +58,12 @@ public class TelaInicial extends JFrame implements ActionListener, InterfaceTela
         this.painelBingo.setSize(960,720);
         
         //configura bingo
-        this.bingo.setIcon(new ImageIcon("imagens/TextoBingo.png"));
+        this.bingo.setIcon(new ImageIcon(path+"/TextoBingo.png"));
         this.bingo.setSize(499, 114);
         this.bingo.setLocation(252, 100);
 
         //configura botao jogadores
-        jogadores.setIcon(new ImageIcon("imagens/Jogadores.png"));
+        jogadores.setIcon(new ImageIcon(path+"/Jogadores.png"));
         jogadores.setBackground(Color.black);
         jogadores.setSize(190, 178);
         
@@ -70,13 +71,13 @@ public class TelaInicial extends JFrame implements ActionListener, InterfaceTela
         jogadores.setContentAreaFilled(false); 
         jogadores.setFocusPainted(false);
         
-        jogadores.setLocation(95, 500);
+        jogadores.setLocation(95, 450);
         jogadores.setVisible(false);
 
         jogadores.addActionListener(this);
         
         //configura botao configuracao
-        configuracao.setIcon(new ImageIcon("imagens/Configuracoes.png"));
+        configuracao.setIcon(new ImageIcon(path+"/Configuracoes.png"));
         configuracao.setBackground(Color.black);
         configuracao.setSize(190, 178);
         
@@ -84,14 +85,14 @@ public class TelaInicial extends JFrame implements ActionListener, InterfaceTela
         configuracao.setContentAreaFilled(false); 
         configuracao.setFocusPainted(false);
         
-        configuracao.setLocation(390, 500);
+        configuracao.setLocation(390, 450);
         configuracao.setVisible(true);
 
         configuracao.addActionListener(this);
 
         
         //configura botao iniciar
-        iniciar.setIcon(new ImageIcon("imagens/iniciar.png"));
+        iniciar.setIcon(new ImageIcon(path+"/iniciar.png"));
         iniciar.setBackground(Color.black);
         iniciar.setSize(190, 178);
         
@@ -99,7 +100,7 @@ public class TelaInicial extends JFrame implements ActionListener, InterfaceTela
         iniciar.setContentAreaFilled(false); 
         iniciar.setFocusPainted(false);
         
-        iniciar.setLocation(680, 500);
+        iniciar.setLocation(680, 450);
         iniciar.setVisible(false);
 
         iniciar.addActionListener(this);
@@ -113,12 +114,23 @@ public class TelaInicial extends JFrame implements ActionListener, InterfaceTela
     }
 
     public static void main(String[] args) {
-
+        
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+        int returnVal = fileChooser.showOpenDialog(null);
+        
+        if(returnVal == JFileChooser.APPROVE_OPTION){
+            File file = fileChooser.getSelectedFile();
+            TelaInicial.path = file.getAbsolutePath();
+        }else{
+            System.out.println("");
+        }
         TelaInicial telainicial = new TelaInicial();
         telainicial.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         telainicial.setSize(960, 720);
         telainicial.setLayout(null);
         telainicial.setBackground(Color.white);
+        telainicial.setLocationRelativeTo(null);
 
         telainicial.mostra();
         telainicial.setVisible(true);
@@ -131,7 +143,7 @@ public class TelaInicial extends JFrame implements ActionListener, InterfaceTela
         
         if(a.getSource()==jogadores){
             
-          TelaJogadores addJogador = new TelaJogadores();
+          TelaJogadores addJogador = new TelaJogadores(sorteio1,path);
           addJogador.setVisible(true);
 
         }
@@ -139,10 +151,10 @@ public class TelaInicial extends JFrame implements ActionListener, InterfaceTela
             String opcoes[]= {"cheia", "linha"};
             Object showInputDialog = JOptionPane.showInputDialog(configuracao,opcoes,
                     "Escolha o tipo de Cartela",JOptionPane.INFORMATION_MESSAGE, 
-                    new ImageIcon("imagens/Configuracoes.png"),opcoes, opcoes[0]);
+                    new ImageIcon(path+"/Configuracoes.png"),opcoes, opcoes[0]);
             tipo = showInputDialog.toString();
             
-            sorteio1 = new Sorteio();
+            sorteio1 = new Sorteio(path);
             sorteio1.setTipoCartela(tipo);
             
             jogadores.setVisible(true);
@@ -162,7 +174,7 @@ public class TelaInicial extends JFrame implements ActionListener, InterfaceTela
                 JOptionPane.showMessageDialog(null,"É necessário cadastrar jogadores");
             }else{
                 this.setVisible(false);
-                TelaSorteio telaSorteio = new TelaSorteio(sorteio1);
+                TelaSorteio telaSorteio = new TelaSorteio(sorteio1,path);
             }  
         }
     }

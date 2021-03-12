@@ -29,13 +29,13 @@ public class TelaInternaSorteio extends JInternalFrame{
     
     Sorteio sorteio;
     
-    public TelaInternaSorteio(Sorteio sorteio1){
+    public TelaInternaSorteio(Sorteio sorteio1,String path){
         sorteio = sorteio1;
         this.setVisible(true);
         this.setTitle("Cartelas");
         this.setLayout(new FlowLayout());
         for(int i=0;i<sorteio.getQtdJogadores();i++){
-           Cartelinha nova = new Cartelinha(sorteio,i);
+           Cartelinha nova = new Cartelinha(sorteio,i,path);
            this.add(nova);
        }
     }

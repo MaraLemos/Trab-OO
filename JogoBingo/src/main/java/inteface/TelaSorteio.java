@@ -46,9 +46,11 @@ public class TelaSorteio implements ActionListener, InterfaceTela  {
             num61,num62,num63,num64,num65,num66,num67,num68,num69,num70,num71,num72,num73,num74,num75;
     private Sorteio sorteio;
     private JInternalFrame cartelas;
+    String path;
     
-    public TelaSorteio(Sorteio sorteio1){
+    public TelaSorteio(Sorteio sorteio1, String path){
         
+        this.path = path;
         sorteio = sorteio1;
         pag = new JFrame();
         principal = new JDesktopPane();
@@ -89,45 +91,45 @@ public class TelaSorteio implements ActionListener, InterfaceTela  {
         principal.setLayout(null);
         principal.setBackground(Color.white);
         JLabel label = new JLabel();
-        label.setIcon(new ImageIcon("imagens/TextoNumSorteados.png"));
+        label.setIcon(new ImageIcon(path+"/TextoNumSorteados.png"));
         label.setLocation(380, 0);
         label.setSize(453, 75);
         principal.add(label);
        
         //Criando roleta
        JLabel aste = new JLabel();
-       aste.setIcon(new ImageIcon("imagens/roleta/AsteRoleta.png"));
+       aste.setIcon(new ImageIcon(path+"/roleta/AsteRoleta.png"));
        aste.setSize(200, 161);
        aste.setLocation(80,130);
        principal.add(aste);
        JLabel roda = new JLabel();
-       roda.setIcon(new ImageIcon("imagens/roleta/CirculoRoleta.png"));
+       roda.setIcon(new ImageIcon(path+"/roleta/CirculoRoleta.png"));
        roda.setSize(202, 210);
        roda.setLocation(80,50);
        principal.add(roda);
-       bolaAmarela.setIcon(new ImageIcon("imagens/roleta/BolaAmarela.png"));
+       bolaAmarela.setIcon(new ImageIcon(path+"/roleta/BolaAmarela.png"));
        bolaAmarela.setSize(30, 30);
        bolaAmarela.setLocation(100,173);
        principal.add(bolaAmarela);
-       bolaLaranja.setIcon(new ImageIcon("imagens/roleta/BolaLaranja.png"));
+       bolaLaranja.setIcon(new ImageIcon(path+"/roleta/BolaLaranja.png"));
        bolaLaranja.setSize(30, 30);
        bolaLaranja.setLocation(125,193);
        principal.add(bolaLaranja);
-       bolaRosa.setIcon(new ImageIcon("imagens/roleta/BolaRosa.png"));
+       bolaRosa.setIcon(new ImageIcon(path+"/roleta/BolaRosa.png"));
        bolaRosa.setSize(30, 30);
        bolaRosa.setLocation(160,194);
        principal.add(bolaRosa);
-       bolaVerde.setIcon(new ImageIcon("imagens/roleta/BolaVerde.png"));
+       bolaVerde.setIcon(new ImageIcon(path+"/roleta/BolaVerde.png"));
        bolaVerde.setSize(30, 30);
        bolaVerde.setLocation(122,174);
        principal.add(bolaVerde);
-       bolaVermelha.setIcon(new ImageIcon("imagens/roleta/BolaVermelha.png"));
+       bolaVermelha.setIcon(new ImageIcon(path+"/roleta/BolaVermelha.png"));
        bolaVermelha.setSize(30, 30);
        bolaVermelha.setLocation(178,183);
        principal.add(bolaVermelha);
        
        //Botão de sortear
-       botaoGirar.setIcon(new ImageIcon("./imagens/BotaoGireARoleta.png"));
+       botaoGirar.setIcon(new ImageIcon(path+"/BotaoGireARoleta.png"));
        botaoGirar.setBackground(Color.black);
        botaoGirar.setSize(220, 35);
        botaoGirar.setLocation(50,275);
@@ -177,7 +179,7 @@ public class TelaSorteio implements ActionListener, InterfaceTela  {
        principal.add(num66);principal.add(num67);principal.add(num68);principal.add(num69);principal.add(num70);
        principal.add(num71);principal.add(num72);principal.add(num73);principal.add(num74);principal.add(num75);
        
-       cartelas = new TelaInternaSorteio(sorteio);
+       cartelas = new TelaInternaSorteio(sorteio,path);
        cartelas.setSize(940,350);
        cartelas.setLocation(0, 350);
        principal.add(cartelas);
@@ -185,7 +187,7 @@ public class TelaSorteio implements ActionListener, InterfaceTela  {
     }
     
     public JLabel organizaNumeros(JLabel x,int coluna,int linha,int imagem){
-        x.setIcon(new ImageIcon("./imagens/Numeros/"+imagem+".png")); 
+        x.setIcon(new ImageIcon(path+"/Numeros/"+imagem+".png")); 
         x.setSize(40,40);
         x.setLocation(240 + coluna*40,100 + linha*40);
         return x;
@@ -197,159 +199,159 @@ public class TelaSorteio implements ActionListener, InterfaceTela  {
         }
         
         if(x == 1)
-            num1.setIcon(new ImageIcon("imagens/Numeros/1v.png"));
+            num1.setIcon(new ImageIcon(path+"/Numeros/1v.png"));
         if(x == 2)
-            num2.setIcon(new ImageIcon("imagens/Numeros/2v.png"));
+            num2.setIcon(new ImageIcon(path+"/Numeros/2v.png"));
         if(x == 3)
-            num3.setIcon(new ImageIcon("imagens/Numeros/3v.png"));
+            num3.setIcon(new ImageIcon(path+"/Numeros/3v.png"));
         if(x == 4)
-            num4.setIcon(new ImageIcon("imagens/Numeros/4v.png"));
+            num4.setIcon(new ImageIcon(path+"/Numeros/4v.png"));
         if(x == 5)
-            num5.setIcon(new ImageIcon("imagens/Numeros/5v.png"));
+            num5.setIcon(new ImageIcon(path+"/Numeros/5v.png"));
         if(x == 6)
-            num6.setIcon(new ImageIcon("imagens/Numeros/6v.png"));
+            num6.setIcon(new ImageIcon(path+"/Numeros/6v.png"));
         if(x == 7)
-            num7.setIcon(new ImageIcon("imagens/Numeros/7v.png"));
+            num7.setIcon(new ImageIcon(path+"/Numeros/7v.png"));
         if(x == 8)
-            num8.setIcon(new ImageIcon("imagens/Numeros/8v.png"));
+            num8.setIcon(new ImageIcon(path+"/Numeros/8v.png"));
         if(x == 9)
-            num9.setIcon(new ImageIcon("imagens/Numeros/9v.png"));
+            num9.setIcon(new ImageIcon(path+"/Numeros/9v.png"));
         if(x == 10)
-            num10.setIcon(new ImageIcon("imagens/Numeros/10v.png"));
+            num10.setIcon(new ImageIcon(path+"/Numeros/10v.png"));
         if(x == 11)
-            num11.setIcon(new ImageIcon("imagens/Numeros/11v.png"));
+            num11.setIcon(new ImageIcon(path+"/Numeros/11v.png"));
         if(x == 12)
-            num12.setIcon(new ImageIcon("imagens/Numeros/12v.png"));
+            num12.setIcon(new ImageIcon(path+"/Numeros/12v.png"));
         if(x == 13)
-            num13.setIcon(new ImageIcon("imagens/Numeros/13v.png"));
+            num13.setIcon(new ImageIcon(path+"/Numeros/13v.png"));
         if(x == 14)
-            num14.setIcon(new ImageIcon("imagens/Numeros/14v.png"));
+            num14.setIcon(new ImageIcon(path+"/Numeros/14v.png"));
         if(x == 15)
-            num15.setIcon(new ImageIcon("imagens/Numeros/15v.png"));
+            num15.setIcon(new ImageIcon(path+"/Numeros/15v.png"));
         if(x == 16)
-            num16.setIcon(new ImageIcon("imagens/Numeros/16v.png"));
+            num16.setIcon(new ImageIcon(path+"/Numeros/16v.png"));
         if(x == 17)
-            num17.setIcon(new ImageIcon("imagens/Numeros/17v.png"));
+            num17.setIcon(new ImageIcon(path+"/Numeros/17v.png"));
         if(x == 18)
-            num18.setIcon(new ImageIcon("imagens/Numeros/18v.png"));
+            num18.setIcon(new ImageIcon(path+"/Numeros/18v.png"));
         if(x == 19)
-            num19.setIcon(new ImageIcon("imagens/Numeros/19v.png"));
+            num19.setIcon(new ImageIcon(path+"/Numeros/19v.png"));
         if(x == 20)
-            num20.setIcon(new ImageIcon("imagens/Numeros/20v.png"));
+            num20.setIcon(new ImageIcon(path+"/Numeros/20v.png"));
         if(x == 21)
-            num21.setIcon(new ImageIcon("imagens/Numeros/21v.png"));
+            num21.setIcon(new ImageIcon(path+"/Numeros/21v.png"));
         if(x == 22)
-            num22.setIcon(new ImageIcon("imagens/Numeros/22v.png"));
+            num22.setIcon(new ImageIcon(path+"/Numeros/22v.png"));
         if(x == 23)
-            num23.setIcon(new ImageIcon("imagens/Numeros/23v.png"));
+            num23.setIcon(new ImageIcon(path+"/Numeros/23v.png"));
         if(x == 24)
-            num24.setIcon(new ImageIcon("imagens/Numeros/24v.png"));
+            num24.setIcon(new ImageIcon(path+"/Numeros/24v.png"));
         if(x == 25)
-            num25.setIcon(new ImageIcon("imagens/Numeros/25v.png"));
+            num25.setIcon(new ImageIcon(path+"/Numeros/25v.png"));
         if(x == 26)
-            num26.setIcon(new ImageIcon("imagens/Numeros/26v.png"));
+            num26.setIcon(new ImageIcon(path+"/Numeros/26v.png"));
         if(x == 27)
-            num27.setIcon(new ImageIcon("imagens/Numeros/27v.png"));
+            num27.setIcon(new ImageIcon(path+"/Numeros/27v.png"));
         if(x == 28)
-            num28.setIcon(new ImageIcon("imagens/Numeros/28v.png"));
+            num28.setIcon(new ImageIcon(path+"/Numeros/28v.png"));
         if(x == 29)
-            num29.setIcon(new ImageIcon("imagens/Numeros/29v.png"));
+            num29.setIcon(new ImageIcon(path+"/Numeros/29v.png"));
         if(x == 30)
-            num30.setIcon(new ImageIcon("imagens/Numeros/30v.png"));
+            num30.setIcon(new ImageIcon(path+"/Numeros/30v.png"));
         if(x == 31)
-            num31.setIcon(new ImageIcon("imagens/Numeros/31v.png"));
+            num31.setIcon(new ImageIcon(path+"/Numeros/31v.png"));
         if(x == 32)
-            num32.setIcon(new ImageIcon("imagens/Numeros/32v.png"));
+            num32.setIcon(new ImageIcon(path+"/Numeros/32v.png"));
         if(x == 33)
-            num33.setIcon(new ImageIcon("imagens/Numeros/33v.png"));
+            num33.setIcon(new ImageIcon(path+"/Numeros/33v.png"));
         if(x == 34)
-            num34.setIcon(new ImageIcon("imagens/Numeros/34v.png"));
+            num34.setIcon(new ImageIcon(path+"/Numeros/34v.png"));
         if(x == 35)
-            num35.setIcon(new ImageIcon("imagens/Numeros/35v.png"));
+            num35.setIcon(new ImageIcon(path+"/Numeros/35v.png"));
         if(x == 36)
-            num36.setIcon(new ImageIcon("imagens/Numeros/36v.png"));
+            num36.setIcon(new ImageIcon(path+"/Numeros/36v.png"));
         if(x == 37)
-            num37.setIcon(new ImageIcon("imagens/Numeros/37v.png"));
+            num37.setIcon(new ImageIcon(path+"/Numeros/37v.png"));
         if(x == 38)
-            num38.setIcon(new ImageIcon("imagens/Numeros/38v.png"));
+            num38.setIcon(new ImageIcon(path+"/Numeros/38v.png"));
         if(x == 39)
-            num39.setIcon(new ImageIcon("imagens/Numeros/39v.png"));
+            num39.setIcon(new ImageIcon(path+"/Numeros/39v.png"));
         if(x == 40)
-            num40.setIcon(new ImageIcon("imagens/Numeros/40v.png"));
+            num40.setIcon(new ImageIcon(path+"/Numeros/40v.png"));
         if(x == 41)
-            num41.setIcon(new ImageIcon("imagens/Numeros/41v.png"));
+            num41.setIcon(new ImageIcon(path+"/Numeros/41v.png"));
         if(x == 42)
-            num42.setIcon(new ImageIcon("imagens/Numeros/42v.png"));
+            num42.setIcon(new ImageIcon(path+"/Numeros/42v.png"));
         if(x == 43)
-            num43.setIcon(new ImageIcon("imagens/Numeros/43v.png"));
+            num43.setIcon(new ImageIcon(path+"/Numeros/43v.png"));
         if(x == 44)
-            num44.setIcon(new ImageIcon("imagens/Numeros/44v.png"));
+            num44.setIcon(new ImageIcon(path+"/Numeros/44v.png"));
         if(x == 45)
-            num45.setIcon(new ImageIcon("imagens/Numeros/45v.png"));
+            num45.setIcon(new ImageIcon(path+"/Numeros/45v.png"));
         if(x == 46)
-            num46.setIcon(new ImageIcon("imagens/Numeros/46v.png"));
+            num46.setIcon(new ImageIcon(path+"/Numeros/46v.png"));
         if(x == 47)
-            num47.setIcon(new ImageIcon("imagens/Numeros/47v.png"));
+            num47.setIcon(new ImageIcon(path+"/Numeros/47v.png"));
         if(x == 48)
-            num48.setIcon(new ImageIcon("imagens/Numeros/48v.png"));
+            num48.setIcon(new ImageIcon(path+"/Numeros/48v.png"));
         if(x == 49)
-            num49.setIcon(new ImageIcon("imagens/Numeros/49v.png"));
+            num49.setIcon(new ImageIcon(path+"/Numeros/49v.png"));
         if(x == 50)
-            num50.setIcon(new ImageIcon("imagens/Numeros/50v.png"));
+            num50.setIcon(new ImageIcon(path+"/Numeros/50v.png"));
         if(x == 51)
-            num51.setIcon(new ImageIcon("imagens/Numeros/51v.png"));
+            num51.setIcon(new ImageIcon(path+"/Numeros/51v.png"));
         if(x == 52)
-            num52.setIcon(new ImageIcon("imagens/Numeros/52v.png"));
+            num52.setIcon(new ImageIcon(path+"/Numeros/52v.png"));
         if(x == 53)
-            num53.setIcon(new ImageIcon("imagens/Numeros/53v.png"));
+            num53.setIcon(new ImageIcon(path+"/Numeros/53v.png"));
         if(x == 54)
-            num54.setIcon(new ImageIcon("imagens/Numeros/54v.png"));
+            num54.setIcon(new ImageIcon(path+"/Numeros/54v.png"));
         if(x == 55)
-            num55.setIcon(new ImageIcon("imagens/Numeros/55v.png"));
+            num55.setIcon(new ImageIcon(path+"/Numeros/55v.png"));
         if(x == 56)
-            num56.setIcon(new ImageIcon("imagens/Numeros/56v.png"));
+            num56.setIcon(new ImageIcon(path+"/Numeros/56v.png"));
         if(x == 57)
-            num57.setIcon(new ImageIcon("imagens/Numeros/57v.png"));
+            num57.setIcon(new ImageIcon(path+"/Numeros/57v.png"));
         if(x == 58)
-            num58.setIcon(new ImageIcon("imagens/Numeros/58v.png"));
+            num58.setIcon(new ImageIcon(path+"/Numeros/58v.png"));
         if(x == 59)
-            num59.setIcon(new ImageIcon("imagens/Numeros/59v.png"));
+            num59.setIcon(new ImageIcon(path+"/Numeros/59v.png"));
         if(x == 60)
-            num60.setIcon(new ImageIcon("imagens/Numeros/60v.png"));
+            num60.setIcon(new ImageIcon(path+"/Numeros/60v.png"));
         if(x == 61)
-            num61.setIcon(new ImageIcon("imagens/Numeros/61v.png"));
+            num61.setIcon(new ImageIcon(path+"/Numeros/61v.png"));
         if(x == 62)
-            num62.setIcon(new ImageIcon("imagens/Numeros/62v.png"));
+            num62.setIcon(new ImageIcon(path+"/Numeros/62v.png"));
         if(x == 63)
-            num63.setIcon(new ImageIcon("imagens/Numeros/63v.png"));
+            num63.setIcon(new ImageIcon(path+"/Numeros/63v.png"));
         if(x == 64)
-            num64.setIcon(new ImageIcon("imagens/Numeros/64v.png"));
+            num64.setIcon(new ImageIcon(path+"/Numeros/64v.png"));
         if(x == 65)
-            num65.setIcon(new ImageIcon("imagens/Numeros/65v.png"));
+            num65.setIcon(new ImageIcon(path+"/Numeros/65v.png"));
         if(x == 66)
-            num66.setIcon(new ImageIcon("imagens/Numeros/66v.png"));
+            num66.setIcon(new ImageIcon(path+"/Numeros/66v.png"));
         if(x == 67)
-            num67.setIcon(new ImageIcon("imagens/Numeros/67v.png"));
+            num67.setIcon(new ImageIcon(path+"/Numeros/67v.png"));
         if(x == 68)
-            num68.setIcon(new ImageIcon("imagens/Numeros/68v.png"));
+            num68.setIcon(new ImageIcon(path+"/Numeros/68v.png"));
         if(x == 69)
-            num69.setIcon(new ImageIcon("imagens/Numeros/69v.png"));
+            num69.setIcon(new ImageIcon(path+"/Numeros/69v.png"));
         if(x == 70)
-            num70.setIcon(new ImageIcon("imagens/Numeros/70v.png"));
+            num70.setIcon(new ImageIcon(path+"/Numeros/70v.png"));
         if(x == 71)
-            num71.setIcon(new ImageIcon("imagens/Numeros/71v.png"));
+            num71.setIcon(new ImageIcon(path+"/Numeros/71v.png"));
         if(x == 72)
-            num72.setIcon(new ImageIcon("imagens/Numeros/72v.png"));
+            num72.setIcon(new ImageIcon(path+"/Numeros/72v.png"));
         if(x == 73)
-            num73.setIcon(new ImageIcon("imagens/Numeros/73v.png"));
+            num73.setIcon(new ImageIcon(path+"/Numeros/73v.png"));
         if(x == 74)
-            num74.setIcon(new ImageIcon("imagens/Numeros/74v.png"));
+            num74.setIcon(new ImageIcon(path+"/Numeros/74v.png"));
         if(x == 75)
-            num75.setIcon(new ImageIcon("imagens/Numeros/75v.png"));
+            num75.setIcon(new ImageIcon(path+"/Numeros/75v.png"));
         
         if(sorteio.verificaCartelas(x)){
             cartelas.dispose();
-            cartelas = new TelaInternaSorteio(sorteio);
+            cartelas = new TelaInternaSorteio(sorteio,path);
             cartelas.setSize(940,350);
             cartelas.setLocation(0, 350);
             principal.add(cartelas);
@@ -398,7 +400,7 @@ public class TelaSorteio implements ActionListener, InterfaceTela  {
             retornaPosicaoInicial();
             sorteia();
             cartelas.dispose();
-            cartelas = new TelaInternaSorteio(sorteio);
+            cartelas = new TelaInternaSorteio(sorteio,path);
             cartelas.setSize(940,350);
             cartelas.setLocation(0, 350);
             principal.add(cartelas);

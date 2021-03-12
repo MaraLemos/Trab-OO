@@ -41,13 +41,15 @@ public class Sorteio {
 
     private int qtdJogadores;
     private int qtdNumSorteados;
-    
+    private String path;
     /**
      * Construtor da classe Sorteio
      *
      * @author Mara de Lemos Gomes
+     * @param path //Caminho do arquivo que contem os jogadores
      */
-    public Sorteio(){
+    public Sorteio(String path){
+        this.path = path;
         this.jogadores = new ArrayList<>();
         this.cartelas = new ArrayList<>();
 	this.numSorteados = new int[75];
@@ -234,7 +236,7 @@ public class Sorteio {
      * @author Mara de Lemos Gomes
      */
     public void leArquivo() throws IOException{
-        BufferedReader arquivo = new BufferedReader(new FileReader("bancoDeDados/jogadores.txt"));
+        BufferedReader arquivo = new BufferedReader(new FileReader(path+"/jogadores.txt"));
         String linha = "";
         
         //Enquanto houver mais linhas
@@ -255,12 +257,11 @@ public class Sorteio {
      *
      * @author Thiago Goulart da Fonseca
      */
-    public static void abrirArquivoParaEscrita(String nome) throws IOException{
+    public void abrirArquivoParaEscrita(String nome) throws IOException{
         FileWriter fwArquivo;
         BufferedWriter bwArquivo;
-
        //Função leitura garante que arquivo existe, abrindo arquivo, passando true para acrescentar dados e não substituir
-        fwArquivo = new FileWriter("bancoDeDados/jogadores.txt",true);
+        fwArquivo = new FileWriter(path+"/jogadores.txt",true);
         bwArquivo = new BufferedWriter(fwArquivo);
 
         bwArquivo.write(nome);
@@ -278,7 +279,7 @@ public class Sorteio {
      */
     public void atualizaBD(){
         try{
-            FileWriter arquivo = new FileWriter("bancoDeDados/jogadores.txt",false);
+            FileWriter arquivo = new FileWriter(path+"/jogadores.txt",false);
             BufferedWriter bwArquivo = new BufferedWriter(arquivo);
             String nome = "";
             for(int i = 0; i < jogadores.size(); i++){
