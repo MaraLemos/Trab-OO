@@ -36,14 +36,15 @@ public class TelaJogadores extends JFrame implements ActionListener, InterfaceTe
     private JButton addJogador;
     private JButton voltar;
     private String path;
+   
 	
    // private JPanel painelAddJogadores; //colocar um JoptionPane
     private Jogador jogador;
     private Sorteio sorteio;
 
     public TelaJogadores(Sorteio sorteio,String path) {
-		
-		this.path = path;
+    
+	this.path = path;
         this.painelJogadores = new JPanel();
         this.imagemJogadores = new JLabel();
         this.addJogador = new JButton();
@@ -107,8 +108,14 @@ public class TelaJogadores extends JFrame implements ActionListener, InterfaceTe
     }
 
     @Override
-    public void actionPerformed(ActionEvent ae) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void actionPerformed(ActionEvent a) {
+        if(a.getSource() ==voltar ){
+//            TelaInicial telaInicial = new TelaInicial();
+//           telaInicial.show();
+//          
+//          telaInicial.setVisible(true); 
+//           //this.dispose();
+        }
     }
 
 }
