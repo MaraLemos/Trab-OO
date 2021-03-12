@@ -68,7 +68,7 @@ public class TelaJogadores extends JFrame implements ActionListener, InterfaceTe
         //configura imagemJogadores
         this.imagemJogadores.setIcon(new ImageIcon(path+"/TextoJogadores.png"));
         this.imagemJogadores.setSize(392, 82);
-        this.imagemJogadores.setLocation(252, 100);
+        this.imagemJogadores.setLocation(284, 100);
         
         
         //configura PainelJogadores
@@ -76,17 +76,23 @@ public class TelaJogadores extends JFrame implements ActionListener, InterfaceTe
         this.painelJogadores.setLayout(null);
         this.painelJogadores.add(imagemJogadores);
         
-        addJogador.setIcon(new ImageIcon(path+"/botaoadd.png"));
+        addJogador.setIcon(new ImageIcon(path+"/BotaoMais.png"));
         addJogador.setBackground(Color.white);
-        addJogador.setSize(37, 34);
-        addJogador.setLocation(850, 95);
+        addJogador.setSize(82, 82);
+        addJogador.setLocation(800, 100);
         addJogador.setVisible(true);
+        addJogador.setBorderPainted(false); 
+        addJogador.setContentAreaFilled(false); 
+        addJogador.setFocusPainted(false);
         
-        voltar.setIcon(new ImageIcon(path+"/botaovoltar.png"));
+        voltar.setIcon(new ImageIcon(path+"/BotaoVoltar.png"));
         voltar.setBackground(Color.white);
-        voltar.setSize(41, 36);
-        voltar.setLocation(50, 95);
+        voltar.setSize(82, 82);
+        voltar.setLocation(50, 100);
         voltar.setVisible(true);
+        voltar.setBorderPainted(false); 
+        voltar.setContentAreaFilled(false); 
+        voltar.setFocusPainted(false);
         
         this.painelJogadores.add(addJogador);
         this.painelJogadores.add(voltar);
