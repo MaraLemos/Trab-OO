@@ -126,13 +126,14 @@ public class Sorteio {
      * 
      * @author Thiago Goulart da Fonseca
      */ 
-    public void RemoveJogador(int id) {
+    public void removeJogador(int id) {
 
         if (id >= 0 && id < this.jogadores.size()) {
             jogadores.remove(id);
             cartelas.remove(id);
             this.qtdJogadores--;
             atualizaBD();
+            JOptionPane.showConfirmDialog(null, " Jogador removido com sucesso ! ", " SUCESSO !", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, new ImageIcon(path + "/blz.png"));
         }else{
             JOptionPane.showConfirmDialog(null, " Jogador não existe ! ", " ERRO !" ,JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, new ImageIcon(path + "/Erro.png"));
         }
