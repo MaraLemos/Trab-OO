@@ -401,8 +401,8 @@ public class TelaSorteio implements ActionListener, InterfaceTela  {
             sorteia();
             cartelas.dispose();
             cartelas = new TelaInternaSorteio(sorteio,path);
-            cartelas.setSize(940,330);
-            cartelas.setLocation(0, 350);
+            cartelas.setSize(940,350);
+            cartelas.setLocation(0, 330);
             principal.add(cartelas);
         }
     }

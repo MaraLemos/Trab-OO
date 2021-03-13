@@ -55,7 +55,7 @@ public class TelaInicial extends JFrame implements ActionListener, InterfaceTela
         setLocationRelativeTo(null);
         mostra();
         setVisible(true);
-
+        setResizable(false);
     }
 
     @Override

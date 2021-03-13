@@ -49,7 +49,6 @@ public class TelaJogadores extends JFrame implements ActionListener, InterfaceTe
         this.imagemJogadores = new JLabel();
         this.addJogador = new JButton();
         this.voltar = new JButton();
-        //  this.painelAddJogadores = new JPanel(); //colocar um JoptionPane
         this.sorteio = sorteio;
         
         //Configura a JFrame
@@ -59,6 +58,7 @@ public class TelaJogadores extends JFrame implements ActionListener, InterfaceTe
         this.setVisible(true);
         this.setLocationRelativeTo(null);
         this.setBackground(Color.white);
+        this.setResizable(false);
         mostra();
     }
 
@@ -120,7 +120,9 @@ public class TelaJogadores extends JFrame implements ActionListener, InterfaceTe
             if(sorteio.getQtdJogadores() < 4){
                 String nome;
                 nome = JOptionPane.showInputDialog(null,"Digite um username: ", "Adicionando novo jogador",JOptionPane.QUESTION_MESSAGE);
-                sorteio.insereJogador(nome,"tela");
+                if(nome != null){
+                    sorteio.insereJogador(nome,"tela");
+                }
             }else{
                 JOptionPane.showConfirmDialog(null, "A quantidade máxima de jogadores foi atingida", " PARE !" ,JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE, new ImageIcon(path + "/pare.png"));
             }
