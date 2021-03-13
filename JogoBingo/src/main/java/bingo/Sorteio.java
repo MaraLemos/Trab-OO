@@ -25,6 +25,7 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -88,7 +89,7 @@ public class Sorteio {
                 nome1 = jogadores.get(i).getUserName();
                 nome1 = nome1.toUpperCase().trim();
                 if(nome1.compareTo(nome) == 0){
-                    JOptionPane.showMessageDialog(null, "Esse nome já está sendo usado, tente outro.", "ERRO!", JOptionPane.ERROR_MESSAGE, null);
+                    JOptionPane.showConfirmDialog(null, "Esse nome já está sendo usado, tente outro.", " ERRO !" ,JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE, new ImageIcon(path + "/Erro.png"));
                     break;
                 }
             }
@@ -115,7 +116,7 @@ public class Sorteio {
                 }
             }
         }else{
-            JOptionPane.showMessageDialog(null, "A quantidade máxima de jogadores foi atingida");
+            JOptionPane.showConfirmDialog(null, "A quantidade máxima de jogadores foi atingida", " PARE !" ,JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE, new ImageIcon(path + "/pare.png"));
         }
     }
     
@@ -133,7 +134,7 @@ public class Sorteio {
             this.qtdJogadores--;
             atualizaBD();
         }else{
-            JOptionPane.showConfirmDialog(null, " Jogador não existe ! ", " ERRO !" ,JOptionPane.DEFAULT_OPTION);
+            JOptionPane.showConfirmDialog(null, " Jogador não existe ! ", " ERRO !" ,JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, new ImageIcon(path + "/Erro.png"));
         }
     }
     
@@ -151,13 +152,13 @@ public class Sorteio {
         
         for(i = 0; i < jogadores.size(); i++){
             if(jogadores.get(i).getUserName().compareTo(nome) == 0){
-                JOptionPane.showConfirmDialog(null, " Nome já utilizado ! ", " ERRO !" ,JOptionPane.DEFAULT_OPTION);
+                JOptionPane.showConfirmDialog(null, " Nome já utilizado ! ", " ERRO !" ,JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, new ImageIcon(path + "/Erro.png"));
                 break;
             }
         }
         if(i == jogadores.size()){
             jogadores.get(id).setUserName(nome);
-            JOptionPane.showConfirmDialog(null, " Nome alterado com Sucesso ! ", " SUCESSO !" ,JOptionPane.DEFAULT_OPTION);
+            JOptionPane.showConfirmDialog(null, " Nome alterado com Sucesso ! ", " SUCESSO !", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, new ImageIcon(path + "/blz.png"));
             atualizaBD();
         }
     }

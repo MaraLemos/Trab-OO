@@ -181,7 +181,7 @@ public class TelaSorteio implements ActionListener, InterfaceTela  {
        
        cartelas = new TelaInternaSorteio(sorteio,path);
        cartelas.setSize(940,350);
-       cartelas.setLocation(0, 350);
+       cartelas.setLocation(0, 330);
        principal.add(cartelas);
        pag.add(principal);
     }
@@ -353,9 +353,9 @@ public class TelaSorteio implements ActionListener, InterfaceTela  {
             cartelas.dispose();
             cartelas = new TelaInternaSorteio(sorteio,path);
             cartelas.setSize(940,350);
-            cartelas.setLocation(0, 350);
+            cartelas.setLocation(0, 330);
             principal.add(cartelas);
-            JOptionPane.showConfirmDialog(null, " Parabéns " + sorteio.getVencedor() + "! Você ganhou!", " VITÓRIA !",JOptionPane.DEFAULT_OPTION);
+            JOptionPane.showConfirmDialog(null," Parabéns " + sorteio.getVencedor() + "! Você ganhou!"," VITÓRIA !", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, new ImageIcon(path + "/Vitoria.png"));
             System.exit(0);
         }
     }
@@ -401,7 +401,7 @@ public class TelaSorteio implements ActionListener, InterfaceTela  {
             sorteia();
             cartelas.dispose();
             cartelas = new TelaInternaSorteio(sorteio,path);
-            cartelas.setSize(940,350);
+            cartelas.setSize(940,330);
             cartelas.setLocation(0, 350);
             principal.add(cartelas);
         }

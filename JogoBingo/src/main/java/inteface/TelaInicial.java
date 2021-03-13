@@ -64,7 +64,8 @@ public class TelaInicial extends JFrame implements ActionListener, InterfaceTela
         //configura painelbingo
         this.painelBingo.setLayout(null);
         this.painelBingo.setSize(960, 720);
-
+        this.painelBingo.setBackground(Color.getHSBColor(330,95,100));
+        
         //configura bingo
         this.bingo.setIcon(new ImageIcon(path + "/TextoBingo.png"));
         this.bingo.setSize(499, 114);
@@ -152,9 +153,9 @@ public class TelaInicial extends JFrame implements ActionListener, InterfaceTela
         //açao botao configuração
         if (a.getSource() == configuracao) {
             String opcoes[] = {"cheia", "linha"};
-            Object showInputDialog = JOptionPane.showInputDialog(configuracao, opcoes,
+            Object showInputDialog = JOptionPane.showInputDialog(configuracao,"",
                     "Escolha o tipo de Cartela", JOptionPane.INFORMATION_MESSAGE,
-                    new ImageIcon(path + "/Configuracoes.png"), opcoes, opcoes[0]);
+                    new ImageIcon(path + "/ConfiguracoesIcon.png"), opcoes, opcoes[0]);
             tipo = showInputDialog.toString();
 
             sorteio1 = new Sorteio(path);
