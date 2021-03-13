@@ -108,6 +108,7 @@ public class Sorteio {
                 this.qtdJogadores++;
 
                 if(pai.compareTo("arquivo") != 0){
+                    JOptionPane.showConfirmDialog(null, "Jogador adicionado com sucesso", " SUCESSO !" ,JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, new ImageIcon(path + "/blz.png"));
                     try{
                         abrirArquivoParaEscrita(nome);
                     }catch(IOException ex){

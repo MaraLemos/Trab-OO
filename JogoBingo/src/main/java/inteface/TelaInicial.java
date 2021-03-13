@@ -176,7 +176,7 @@ public class TelaInicial extends JFrame implements ActionListener, InterfaceTela
         //açao botao iniciar
         if (a.getSource() == iniciar) {
             if (sorteio1.getQtdJogadores() < 2) {
-                JOptionPane.showMessageDialog(null, "É necessário cadastrar jogadores");
+                JOptionPane.showMessageDialog(null,"É necessário cadastrar jogadores", "ERRO !",JOptionPane.ERROR_MESSAGE, new ImageIcon(path + "/Erro.png"));
             } else {
                 this.setVisible(false);
                 TelaSorteio telaSorteio = new TelaSorteio(sorteio1, path);
