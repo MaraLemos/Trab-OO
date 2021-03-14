@@ -34,8 +34,11 @@ public class TelaJogadores extends JFrame implements ActionListener, InterfaceTe
     private final JPanel painelJogadores;
     private JButton addJogador;
     private JButton voltar;
+    private JButton excluir;
+    private JButton editar;
     private String path;
     private TelaInicial telainicial;
+    private JLabel nomes;
 	
    // private JPanel painelAddJogadores; //colocar um JoptionPane
     private Jogador jogador;
@@ -50,7 +53,9 @@ public class TelaJogadores extends JFrame implements ActionListener, InterfaceTe
         this.addJogador = new JButton();
         this.voltar = new JButton();
         this.sorteio = sorteio;
-        
+        this.excluir = new JButton();
+        this.editar = new JButton();
+
         //Configura a JFrame
         this.setTitle("Jogadores");
         this.setSize(960, 720);
@@ -98,9 +103,30 @@ public class TelaJogadores extends JFrame implements ActionListener, InterfaceTe
         voltar.setFocusPainted(false);
         voltar.addActionListener(this);
         
+        excluir.setIcon(new ImageIcon(path+"/BotaoExcluir.png"));
+        excluir.setBackground(Color.white);
+        excluir.setSize(82, 82);
+        excluir.setLocation(800, 500);
+        excluir.setVisible(true); 
+        excluir.setBorderPainted(false); 
+        excluir.setContentAreaFilled(false); 
+        excluir.setFocusPainted(false);
+        excluir.addActionListener(this);
+        
+        editar.setIcon(new ImageIcon(path+"/BotaoEditar.png"));
+        editar.setBackground(Color.white);
+        editar.setSize(82, 82);
+        editar.setLocation(50, 500);
+        editar.setVisible(true); 
+        editar.setBorderPainted(false); 
+        editar.setContentAreaFilled(false); 
+        editar.setFocusPainted(false);
+        editar.addActionListener(this);
+        
         this.painelJogadores.add(addJogador);
         this.painelJogadores.add(voltar);
-        
+        this.painelJogadores.add(excluir);
+        this.painelJogadores.add(editar);
         
         
         //verifica qtd de jogadores
@@ -125,6 +151,50 @@ public class TelaJogadores extends JFrame implements ActionListener, InterfaceTe
                 }
             }else{
                 JOptionPane.showConfirmDialog(null, "A quantidade máxima de jogadores foi atingida", " PARE !" ,JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE, new ImageIcon(path + "/pare.png"));
+            }
+        }
+        if(a.getSource() == excluir){
+            if(sorteio.getQtdJogadores() > 0){
+                int opcao = JOptionPane.showConfirmDialog(null, "Você irá excluir o último jogador a ser inserido, tem certeza que deseja remover?", "Removendo um jogador", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                if(opcao == 0){
+                    sorteio.removeJogador(sorteio.getQtdJogadores() - 1);
+                }
+            }
+            else{
+                JOptionPane.showConfirmDialog(null, "Não há jogadores!", " PARE !" ,JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE, new ImageIcon(path + "/pare.png"));
+            }
+        }
+        if(a.getSource() == editar){
+            String id0, id1 = "1", id2 = "2", id3 = "3", id4 = "4";
+            if(sorteio.getQtdJogadores() > 0){
+                id0 = JOptionPane.showInputDialog(null,"Qual jogador voce quer editar o nome? 1, 2, 3 ou 4: ", "Editando um jogador",JOptionPane.QUESTION_MESSAGE);
+                if(id0.equals(id1))
+                {
+                    int id5 = Integer.parseInt(id1);
+                    String nome = JOptionPane.showInputDialog(null,"Digite um username: ", "Editando um jogador",JOptionPane.QUESTION_MESSAGE);
+                    sorteio.editaJogador(nome, id5 - 1);
+                }
+                else if(id0.equals(id2))
+                {
+                    int id5 = Integer.parseInt(id2);
+                    String nome = JOptionPane.showInputDialog(null,"Digite um username: ", "Editando um jogador",JOptionPane.QUESTION_MESSAGE);
+                    sorteio.editaJogador(nome, id5 - 1);
+                }
+                else if(id0.equals(id3))
+                {
+                    int id5 = Integer.parseInt(id3);
+                    String nome = JOptionPane.showInputDialog(null,"Digite um username: ", "Editando um jogador",JOptionPane.QUESTION_MESSAGE);
+                    sorteio.editaJogador(nome, id5 - 1);
+                }
+                else if(id0.equals(id4))
+                {
+                    int id5 = Integer.parseInt(id4);
+                    String nome = JOptionPane.showInputDialog(null,"Digite um username: ", "Editando um jogador",JOptionPane.QUESTION_MESSAGE);
+                    sorteio.editaJogador(nome, id5 - 1);
+                }
+            }
+            else{
+                JOptionPane.showConfirmDialog(null, "Não há jogadores!", " PARE !" ,JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE, new ImageIcon(path + "/pare.png"));
             }
         }
     }
