@@ -122,7 +122,8 @@ public class TelaInicial extends JFrame implements ActionListener, InterfaceTela
     }
 
     public static void main(String[] args) {
-
+        
+        JOptionPane.showMessageDialog(null,"Para começar selecione a pasta Resouces");
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
         int returnVal = fileChooser.showOpenDialog(null);
@@ -130,8 +131,13 @@ public class TelaInicial extends JFrame implements ActionListener, InterfaceTela
         if (returnVal == JFileChooser.APPROVE_OPTION) {
             File file = fileChooser.getSelectedFile();
             TelaInicial.path = file.getAbsolutePath();
+            if(path.lastIndexOf("Resources") != 0){
+                JOptionPane.showMessageDialog(null,"A pasta resources não foi selecionada");
+                System.exit(0);
+            }
         } else {
-            System.out.println("");
+            JOptionPane.showMessageDialog(null,"A pasta resources não foi selecionada");
+            System.exit(0);
         }
 
         telainicial = new TelaInicial();
