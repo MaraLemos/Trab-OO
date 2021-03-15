@@ -350,12 +350,30 @@ public class TelaSorteio implements ActionListener, InterfaceTela  {
             num75.setIcon(new ImageIcon(path+"/Numeros/75v.png"));
         
         if(sorteio.verificaCartelas(x)){
+            int cont = 0, i;
+            boolean controle = true;
+            while(controle){
+                //Verificando se houve empate
+                for(i=0;i<sorteio.getQtdJogadores();i++){
+                    sorteio.getCartela(i).marcaNum(x);
+                    if(sorteio.getCartela(i).verificaVitoria())
+                        if(!sorteio.retornaNomeJogador(i).equals(sorteio.retornaNomeJogador(sorteio.getIndiceVencedor()))){
+                            cont++;
+                        }
+                }
+                if(i == sorteio.getQtdJogadores())
+                    controle = false;
+            }
             cartelas.dispose();
             cartelas = new TelaInternaSorteio(sorteio,path);
             cartelas.setSize(940,350);
             cartelas.setLocation(0, 330);
             principal.add(cartelas);
-            JOptionPane.showConfirmDialog(null," Parabéns " + sorteio.getVencedor() + "! Você ganhou!"," VITÓRIA !", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, new ImageIcon(path + "/Vitoria.png"));
+            if(cont > 0){
+                JOptionPane.showConfirmDialog(null,"Não há um vencedor!"," EMPATE !", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, new ImageIcon(path + "/Erro.png"));
+            }else{
+                JOptionPane.showConfirmDialog(null," Parabéns " + sorteio.getVencedor() + "! Você ganhou!"," VITÓRIA !", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, new ImageIcon(path + "/Vitoria.png"));
+            }
             System.exit(0);
         }
     }

@@ -38,6 +38,7 @@ public class Sorteio {
     private final List<Cartela> cartelas;
     private final int[] numSorteados;
     private String vencedor;
+    private int indiceVencedor;
     private String tipoCartela;
 
     private int qtdJogadores;
@@ -216,6 +217,7 @@ public class Sorteio {
                 cartelas.get(j).marcaNum(numero);
                 if(cartelas.get(j).verificaVitoria() == true){
                     vencedor = jogadores.get(j).getUserName();
+                    indiceVencedor = j;
                     return true;
                 }
             }
@@ -319,5 +321,26 @@ public class Sorteio {
      */
     public String retornaNomeJogador(int i){
         return jogadores.get(i).getUserName();
+    }
+    
+    /**
+     * Retorna a cartela de id recebido
+     *
+     * @author Mara de Lemos Gomes
+     * @param i
+     * @return cartela
+     */
+    public Cartela getCartela(int i){
+        return cartelas.get(i);
+    }
+    
+    /**
+     * Retorna o indice do vencedor
+     *
+     * @author Mara de Lemos Gomes
+     * @return indiceVencedor
+     */
+    public int getIndiceVencedor(){
+        return indiceVencedor;
     }
 }
