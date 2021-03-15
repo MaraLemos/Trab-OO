@@ -92,7 +92,7 @@ public class TelaJogadores extends JFrame implements ActionListener, InterfaceTe
         addJogador.setFocusPainted(false);
         addJogador.addActionListener(this);
         
-        voltar.setIcon(new ImageIcon(path+"/BotaoVoltar.png"));
+        voltar.setIcon(new ImageIcon(path+"/botaovoltar.png"));
         voltar.setBackground(Color.white);
         voltar.setSize(82, 82);
         voltar.setLocation(50, 100);
