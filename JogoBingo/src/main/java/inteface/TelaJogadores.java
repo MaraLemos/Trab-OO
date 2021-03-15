@@ -25,8 +25,7 @@ import javax.swing.*;
 
 /**
  *
- * @author ketleen
- * @param
+ * @authors Ary de Paula Canuto Neto,Ketleen Anne Faria, Mara de Lemos Gomes
  */
 public class TelaJogadores extends JFrame implements ActionListener, InterfaceTela {
 
